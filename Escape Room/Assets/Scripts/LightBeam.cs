@@ -14,14 +14,16 @@ public enum LightbeamState {
 public class LightBeam : MonoBehaviour {
     #region publics
     public State CurState { get; private set; }
-    public CapsuleCollider lightArea;
+    public GameObject lightObj;
     public KeyColor color;
+    public Material colorRend;
     #endregion
 
     #region privates
     private Dictionary<State, Action> stateEnterMethods;
     private Dictionary<State, Action> stateStayMethods;
     private Dictionary<State, Action> stateExitMethods;
+    private bool inArea;
     #endregion
 
     // Start is called before the first frame update
@@ -39,6 +41,7 @@ public class LightBeam : MonoBehaviour {
             [State.ON] = StateExitOn,
         };
         CurState = State.OFF;
+        lightObj.GetComponent<ParticleSystemRenderer>().material = colorRend;
     }
 
     // Update is called once per frame
@@ -61,20 +64,20 @@ public class LightBeam : MonoBehaviour {
     }
 
     public void turnON() {
-        ChangeState(State.ON);
-        print("turning On");
+        if (inArea) { 
+            ChangeState(State.ON);
+        }
     }
 
     public void turnOFF() {
         ChangeState(State.OFF);
-        print("turning Off");
     }
     
     #region enter states
     private void StateEnterOff() {
     }
     private void StateEnterOn() {
-        lightArea.enabled = true;
+        lightObj.SetActive(true);
     }
     #endregion
 
@@ -89,15 +92,30 @@ public class LightBeam : MonoBehaviour {
     private void StateExitOff() { 
     }
     private void StateExitOn() { 
-        lightArea.enabled = false;
+        lightObj.SetActive(false);
     }
     #endregion
 
 
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Door")) {
-            print("door");
-            //other.gameObject.GetComponent<Door>().ChangeState(DoorState.OPENING);
+        if (other.CompareTag("Door Key")) {
+            var door = other.gameObject.GetComponentInParent<Door>();
+            if (door.key == this.color) {
+                door.ChangeState(DoorState.OPENING);
+            }
+        }
+    }
+
+    private void OnTriggerStay(Collider other) {
+        if (other.CompareTag("Light Area")) {
+            inArea = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Light Area")) {
+            inArea = false;
+            ChangeState(State.OFF);
         }
     }
 }

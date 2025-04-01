@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Anchor
   - Light Beam
+  - Door
+  - Light Area
+  - Door Key
   layers:
   - Default
   - TransparentFX

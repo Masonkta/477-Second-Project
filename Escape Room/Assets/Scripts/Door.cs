@@ -73,7 +73,7 @@ public class Door : MonoBehaviour {
     }
     private void StateEnterOpening() {
         print("opening");
-        transform.Translate(Vector3.forward);
+        transform.Translate(Vector3.left);
         ChangeState(State.OPEN);
     }
     private void StateEnterOpen() {
@@ -86,6 +86,7 @@ public class Door : MonoBehaviour {
     private void StateStayOpening() {
     }
     private void StateStayOpen() {
+        print("open");
     }
     #endregion
 
