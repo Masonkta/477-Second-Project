@@ -46,7 +46,9 @@ public class KingB : MonoBehaviour
                     break;
                 case State._1_Pos1Snap1:
                     //ENABLE NEXT SNAP SET
-                    GameObject snap2 = GameObject.Find("BKSnap2");
+                    GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps1");
+                    snaps1.SetActive(false);
+                    GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps2");
                     snap2.SetActive(true);
                     break;
             }
