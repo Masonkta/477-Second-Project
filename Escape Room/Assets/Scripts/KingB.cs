@@ -30,6 +30,12 @@ public class KingB : MonoBehaviour
                 else
                     ChangeState(State.ERROR);
                 break;
+            case State._1_Pos1Snap1:
+                if (lastSnap == SnapStates.POS2SNAP1)
+                    ChangeState(State._2_Pos2Snap1_FINISH);
+                else
+                    ChangeState(State.ERROR);
+                break;
         }
         lastSnap = SnapStates.NONE;
     }
@@ -51,6 +57,11 @@ public class KingB : MonoBehaviour
                     GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps2");
                     snap2.SetActive(true);
                     break;
+                case State._2_Pos2Snap1_FINISH:
+                    //GameObject reward = GameObject.Find("Reward");
+                    //reward.SetActive(true);
+                    print("FINISH ACHIEVED!");
+                    break;
             }
         }
     }
@@ -65,6 +76,7 @@ public class KingB : MonoBehaviour
     {
         print("SNAPPED");
         print(lastSnap);
+        lastSnap = SnapStates.POS2SNAP1;
         //lastSnap = SnapStates.POS1SNAP1;
         print("lastSnap Change");
         print(lastSnap);
