@@ -45,12 +45,26 @@ public class KingB : MonoBehaviour
                     // do nothing
                     break;
                 case State._1_Pos1Snap1:
+                    //ENABLE NEXT SNAP SET
+                    GameObject snap2 = GameObject.Find("BKSnap2");
+                    snap2.SetActive(true);
                     break;
             }
         }
     }
-    private void Snapped()
+    private void Snap1Pos1()
     {
         print("SNAPPED");
+        print(lastSnap);
+        lastSnap = SnapStates.POS1SNAP1;
+        print(lastSnap);
+    }
+    private void Snap2Pos1()
+    {
+        print("SNAPPED");
+        print(lastSnap);
+        //lastSnap = SnapStates.POS1SNAP1;
+        print("lastSnap Change");
+        print(lastSnap);
     }
 }
