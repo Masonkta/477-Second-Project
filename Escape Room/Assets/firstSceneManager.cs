@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VRTemplate;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class firstSceneManager : MonoBehaviour
 {
     public GameObject door;
+    public GameObject player;
     public bool doorOpening;
     public float doorSpeed = 1f;
     public XRKnob doorLeverKnobScript;
@@ -13,17 +15,39 @@ public class firstSceneManager : MonoBehaviour
     [Header("Conditions For Door")]
     public bool ringOn;
     public bool canFlipLever;
+    [Header("Stuff")]
+    
+    public GameObject correctCylinder;
+    public GameObject ring;
+    Rigidbody ringRb;
 
-    // Start is called before the first frame update
+
     void Start()
     {
-        
+        ringRb = ring.GetComponent<Rigidbody>();
     }
+    
 
-    // Update is called once per frame
     void Update()
     {
+        checkCondition();
+        freezeLever();
         checkOpenDoor();
+        
+        if (player.transform.position.x < -2.1f)
+            sceneChange();
+    }
+
+    void checkCondition(){
+        ringOn = Vector3.Distance(ring.transform.position, correctCylinder.transform.position) < 0.15f && ringRb.isKinematic;
+
+        canFlipLever = ringOn;
+    }
+
+    void freezeLever(){
+        if (!canFlipLever)
+            doorLeverKnobScript.value = Mathf.Clamp(doorLeverKnobScript.value, 0.8f, 1f);
+        
     }
 
     void checkOpenDoor(){
@@ -35,6 +59,10 @@ public class firstSceneManager : MonoBehaviour
             if (door.transform.localPosition.y < 3.31f)
                 door.transform.Translate(Vector3.up * Time.deltaTime * doorSpeed);
                 
+    }
+
+    void sceneChange(){
+        Debug.Log("CHanging scenes");
     }
 
     public void openDoor(){
