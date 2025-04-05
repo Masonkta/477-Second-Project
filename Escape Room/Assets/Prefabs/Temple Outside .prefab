@@ -48,6 +48,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8515938018435575325, guid: be643b3d753084c4dbe67754bb283f4d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.39
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: be643b3d753084c4dbe67754bb283f4d, type: 3}
       propertyPath: m_Name
       value: 'Temple Outside '
@@ -59,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 1916035319065747959, guid: be643b3d753084c4dbe67754bb283f4d, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cdec47ed1f8f9704aa65dc75c28fd595, type: 2}
+      objectReference: {fileID: 2100000, guid: f657f883deb32c04e9ffbaf576eb5322, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
