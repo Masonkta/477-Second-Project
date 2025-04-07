@@ -30,17 +30,15 @@ public class PawnB : MonoBehaviour
                 else
                     ChangeState(State.ERROR);
                 break;
-            case State._1_BP:
+            case State._2_WK:
                 if (lastSnapLocal == PawnBState.POS2SNAP1)
                     ChangeState(State._5_BP);
                 else
                     ChangeState(State.ERROR);
                 break;
-            case State.INCORRECT:
-                if (lastSnapLocal == PawnBState.POS1INCORRECT)
+            case State._1_BP:
+                if (lastSnapLocal == PawnBState.POS2SNAP1)
                     ChangeState(State.INCORRECT);
-                else
-                    ChangeState(State.ERROR);
                 break;
         }
         lastSnapLocal = PawnBState.NONE;
@@ -65,13 +63,16 @@ public class PawnB : MonoBehaviour
                     GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps2");
                     snap2.SetActive(true);
                     break;
-                case State._2_Pos2Snap1_FINISH:
+                case State._5_BP:
                     //GameObject reward = GameObject.Find("Reward");
                     //reward.SetActive(true);
                     print("FINISH ACHIEVED!");
                     break;
+                case State.ERROR:
+                    print("ERROR");
+                    break;
                 case State.INCORRECT:
-                    print("INCORRECT MOVE!");
+                    print("WRONG MOVE!!!!");
                     break;
             }
         }
