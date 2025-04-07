@@ -9,11 +9,12 @@ TagManager:
   - Door
   - Light Area
   - Door Key
+  - BlackPawn
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BlackPawn
   - Water
   - UI
   - 

@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_LayerNames:
   - Default
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - BlackPawn
+  - BlackKing
+  - BlackRook
+  - WhitePawn
+  - WhiteKing
+  - WhiteRook
   - 
   - 
   - 

@@ -36,6 +36,12 @@ public class KingB : MonoBehaviour
                 else
                     ChangeState(State.ERROR);
                 break;
+            case State.INCORRECT:
+                if (lastSnap == SnapStates.POS1INCORRECT)
+                    ChangeState(State.INCORRECT);
+                else
+                    ChangeState(State.ERROR);
+                break;
         }
         lastSnap = SnapStates.NONE;
     }
@@ -62,6 +68,9 @@ public class KingB : MonoBehaviour
                     //reward.SetActive(true);
                     print("FINISH ACHIEVED!");
                     break;
+                case State.INCORRECT:
+                    print("INCORRECT MOVE!");
+                    break;
             }
         }
     }
@@ -70,6 +79,13 @@ public class KingB : MonoBehaviour
         print("SNAPPED");
         print(lastSnap);
         lastSnap = SnapStates.POS1SNAP1;
+        print(lastSnap);
+    }
+    private void Snap1INCORRECT()
+    {
+        print("SNAPPED");
+        print(lastSnap);
+        lastSnap = SnapStates.POS1INCORRECT;
         print(lastSnap);
     }
     private void Snap2Pos1()
