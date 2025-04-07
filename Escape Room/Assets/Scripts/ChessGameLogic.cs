@@ -13,12 +13,12 @@ public class ChessGameLogic : MonoBehaviour
     //private Transform BK_Pos;
     public bool mistakeMade;
     public int correctCounter=0;
-    public SnapStates lastSnap;
+    public ChessGameState currState;
     // Start is called before the first frame update
     void Start()
     {
         print("Chess Logic Loading...");
-        lastSnap = SnapStates.NONE;
+        currState = ChessGameState.IDLE;
         //BK_Pos = BK.transform;
     }
 

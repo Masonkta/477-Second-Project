@@ -1,49 +1,49 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using State = PawnBState;
+using State = ChessGameState;
 public class PawnB : MonoBehaviour
 {
     public State State { get; private set; }
     public GameObject chessGameLogic;
-    public SnapStates lastSnapLocal;
+    public PawnBState lastSnapLocal;
     // Start is called before the first frame update
     void Start()
     {
-        lastSnapLocal = chessGameLogic.GetComponent<ChessGameLogic>().lastSnap;
-        State = State.IDLE;
+        lastSnapLocal = PawnBState.NONE;
+        State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
         print("Starting");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lastSnapLocal == SnapStates.NONE)
+        if (lastSnapLocal == PawnBState.NONE)
         {
             return;
         }
         switch (State)
         {
             case State.IDLE:
-                if (lastSnapLocal == SnapStates.POS1SNAP1)
+                if (lastSnapLocal == PawnBState.POS1SNAP1)
                     ChangeState(State._1_Pos1Snap1);
                 else
                     ChangeState(State.ERROR);
                 break;
             case State._1_Pos1Snap1:
-                if (lastSnapLocal == SnapStates.POS2SNAP1)
+                if (lastSnapLocal == PawnBState.POS2SNAP1)
                     ChangeState(State._2_Pos2Snap1_FINISH);
                 else
                     ChangeState(State.ERROR);
                 break;
             case State.INCORRECT:
-                if (lastSnapLocal == SnapStates.POS1INCORRECT)
+                if (lastSnapLocal == PawnBState.POS1INCORRECT)
                     ChangeState(State.INCORRECT);
                 else
                     ChangeState(State.ERROR);
                 break;
         }
-        lastSnapLocal = SnapStates.NONE;
+        lastSnapLocal = PawnBState.NONE;
     }
     private void ChangeState(State newState)
     {
@@ -78,21 +78,21 @@ public class PawnB : MonoBehaviour
     {
         print("SNAPPED");
         print(lastSnapLocal);
-        lastSnapLocal = SnapStates.POS1SNAP1;
+        lastSnapLocal = PawnBState.POS1SNAP1;
         print(lastSnapLocal);
     }
     private void Snap1INCORRECT()
     {
         print("SNAPPED");
         print(lastSnapLocal);
-        lastSnapLocal = SnapStates.POS1INCORRECT;
+        lastSnapLocal = PawnBState.POS1INCORRECT;
         print(lastSnapLocal);
     }
     private void Snap2Pos1()
     {
         print("SNAPPED");
         print(lastSnapLocal);
-        lastSnapLocal = SnapStates.POS2SNAP1;
+        lastSnapLocal = PawnBState.POS2SNAP1;
         //lastSnap = SnapStates.POS1SNAP1;
         print("lastSnap Change");
         print(lastSnapLocal);
