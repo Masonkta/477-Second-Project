@@ -13,18 +13,18 @@ public class firstSceneManager : MonoBehaviour
     public XRKnob doorLeverKnobScript;
 
     [Header("Conditions For Door")]
-    public bool ringOn;
+    public bool coinOn;
     public bool canFlipLever;
     [Header("Stuff")]
     
-    public GameObject correctCylinder;
-    public GameObject ring;
-    Rigidbody ringRb;
+    public GameObject correctHook;
+    public GameObject coin;
+    Rigidbody coinRb;
 
 
     void Start()
     {
-        ringRb = ring.GetComponent<Rigidbody>();
+        coinRb = coin.GetComponent<Rigidbody>();
     }
     
 
@@ -39,9 +39,10 @@ public class firstSceneManager : MonoBehaviour
     }
 
     void checkCondition(){
-        ringOn = Vector3.Distance(ring.transform.position, correctCylinder.transform.position) < 0.15f && ringRb.isKinematic;
+        // Debug.Log(Vector3.Distance(coin.transform.position, correctHook.transform.position));
+        coinOn = Vector3.Distance(coin.transform.position, correctHook.transform.position) < 0.16f && coinRb.isKinematic;
 
-        canFlipLever = ringOn;
+        canFlipLever = coinOn;
     }
 
     void freezeLever(){
@@ -56,8 +57,9 @@ public class firstSceneManager : MonoBehaviour
             doorOpening = true;
 
         if (doorOpening)
-            if (door.transform.localPosition.y < 3.31f)
-                door.transform.Translate(Vector3.up * Time.deltaTime * doorSpeed);
+            if (door.transform.localPosition.y > -0.635f)
+                door.transform.Translate(door.transform.up * Time.deltaTime * doorSpeed);
+        
                 
     }
 
