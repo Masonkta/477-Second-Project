@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameLogic : MonoBehaviour
+public class ChessGameLogic : MonoBehaviour
 {
     public GameObject BK;
     public GameObject WK;
@@ -13,11 +13,12 @@ public class GameLogic : MonoBehaviour
     //private Transform BK_Pos;
     public bool mistakeMade;
     public int correctCounter=0;
-
+    public SnapStates lastSnap;
     // Start is called before the first frame update
     void Start()
     {
         print("Chess Logic Loading...");
+        lastSnap = SnapStates.NONE;
         //BK_Pos = BK.transform;
     }
 

@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class PawnBState : MonoBehaviour
+public enum PawnBState
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    IDLE,
+    _1_Pos1Snap1,
+    _2_Pos2Snap1_FINISH,
+    INCORRECT,
+    ERROR,
 }
+
