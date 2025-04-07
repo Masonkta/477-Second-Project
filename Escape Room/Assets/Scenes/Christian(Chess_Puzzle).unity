@@ -461,11 +461,10 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 3851723245818174413, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
   m_PrefabInstance: {fileID: 7578048490880596389}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &904620140
+--- !u!114 &904620140 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7081612400523923606, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+  m_PrefabInstance: {fileID: 7578048490880596389}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 904620133}
   m_Enabled: 1
@@ -473,12 +472,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c4bb55bed2cb94098743752c28f873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessGameLogic: {fileID: 1362481147}
---- !u!4 &1106099399 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2121250160527250340, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
-  m_PrefabInstance: {fileID: 7578048490880596389}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1152191589
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -776,119 +769,7 @@ MonoBehaviour:
   WR: {fileID: 219095804}
   mistakeMade: 0
   correctCounter: 0
-  lastSnap: 0
---- !u!1 &1406325857
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1406325858}
-  - component: {fileID: 1406325860}
-  - component: {fileID: 1406325859}
-  m_Layer: 0
-  m_Name: SnapPos1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1406325858
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406325857}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0847, y: 0.01826971, z: 0.0825}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1106099399}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1406325859
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406325857}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.05, y: 0.05, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1406325860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1406325857}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60523e0647cc6ab43acc73cb266a32a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_InteractionLayers:
-    m_Bits: 2
-  m_Handedness: 0
-  m_AttachTransform: {fileID: 1406325858}
-  m_KeepSelectedTargetValid: 1
-  m_DisableVisualsWhenBlockedInGroup: 1
-  m_StartingSelectedInteractable: {fileID: 0}
-  m_StartingTargetFilter: {fileID: 0}
-  m_HoverEntered:
-    m_PersistentCalls:
-      m_Calls: []
-  m_HoverExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_SelectEntered:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7578048490880596390}
-        m_TargetAssemblyTypeName: UnityEngine.Component, UnityEngine
-        m_MethodName: SendMessage
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Snap1Pos1
-          m_BoolArgument: 0
-        m_CallState: 2
-  m_SelectExited:
-    m_PersistentCalls:
-      m_Calls: []
-  m_StartingHoverFilters: []
-  m_StartingSelectFilters: []
-  m_ShowInteractableHoverMeshes: 1
-  m_InteractableHoverMeshMaterial: {fileID: 0}
-  m_InteractableCantHoverMeshMaterial: {fileID: 0}
-  m_SocketActive: 1
-  m_InteractableHoverScale: 1
-  m_RecycleDelayTime: 1
-  m_HoverSocketSnapping: 1
-  m_SocketSnappingRadius: 0.1
-  m_SocketScaleMode: 0
-  m_FixedScale: {x: 1, y: 1, z: 1}
-  m_TargetBoundsSize: {x: 1, y: 1, z: 1}
+  currState: 0
 --- !u!1 &2046343159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1020,6 +901,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1138506048448711321, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747631954024099281, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 904620140}
+    - target: {fileID: 4747631954024099281, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendMessage
+      objectReference: {fileID: 0}
+    - target: {fileID: 4747631954024099281, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Snap2Pos1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250476428241873506, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 904620140}
+    - target: {fileID: 5250476428241873506, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendMessage
+      objectReference: {fileID: 0}
+    - target: {fileID: 5250476428241873506, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: m_SelectEntered.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Component, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5392323255878642624, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8215
@@ -1064,28 +973,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChessTable
       objectReference: {fileID: 0}
+    - target: {fileID: 7081612400523923606, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: chessGameLogic
+      value: 
+      objectReference: {fileID: 1362481147}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2121250160527250340, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1406325858}
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3851723245818174413, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
-      insertIndex: 5
-      addedObject: {fileID: 904620140}
+    m_AddedGameObjects: []
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
---- !u!114 &7578048490880596390 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2742090586148782004, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
-  m_PrefabInstance: {fileID: 7578048490880596389}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2120872309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13f35d4ecec833346b73f6956b3938b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

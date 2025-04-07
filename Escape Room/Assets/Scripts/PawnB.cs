@@ -48,9 +48,11 @@ public class PawnB : MonoBehaviour
     private void ChangeState(State newState)
     {
         print($"Changing state to {newState}");
+        print("GLOBAL STATE CHECK: " +  chessGameLogic.GetComponent<ChessGameLogic>().currState);
         if (State != newState)
         {
             State = newState;
+            chessGameLogic.GetComponent<ChessGameLogic>().currState = newState;
             switch (newState)
             {
                 case State.IDLE:
@@ -58,9 +60,9 @@ public class PawnB : MonoBehaviour
                     break;
                 case State._1_Pos1Snap1:
                     //ENABLE NEXT SNAP SET
-                    GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps1");
+                    GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps1");
                     snaps1.SetActive(false);
-                    GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps2");
+                    GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps2");
                     snap2.SetActive(true);
                     break;
                 case State._2_Pos2Snap1_FINISH:
