@@ -26,13 +26,13 @@ public class PawnB : MonoBehaviour
         {
             case State.IDLE:
                 if (lastSnapLocal == PawnBState.POS1SNAP1)
-                    ChangeState(State._1_Pos1Snap1);
+                    ChangeState(State._1_BP);
                 else
                     ChangeState(State.ERROR);
                 break;
-            case State._1_Pos1Snap1:
+            case State._1_BP:
                 if (lastSnapLocal == PawnBState.POS2SNAP1)
-                    ChangeState(State._2_Pos2Snap1_FINISH);
+                    ChangeState(State._5_BP);
                 else
                     ChangeState(State.ERROR);
                 break;
@@ -58,7 +58,7 @@ public class PawnB : MonoBehaviour
                 case State.IDLE:
                     // do nothing
                     break;
-                case State._1_Pos1Snap1:
+                case State._1_BP:
                     //ENABLE NEXT SNAP SET
                     GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps1");
                     snaps1.SetActive(false);
