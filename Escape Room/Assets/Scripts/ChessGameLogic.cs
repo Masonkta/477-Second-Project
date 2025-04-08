@@ -10,6 +10,7 @@ public class ChessGameLogic : MonoBehaviour
     public GameObject WP;
     public GameObject BR;
     public GameObject WR;
+    public GameObject Reward;
     //private Transform BK_Pos;
     public bool mistakeMade;
     public int correctCounter=0;
@@ -19,6 +20,7 @@ public class ChessGameLogic : MonoBehaviour
     {
         print("Chess Logic Loading...");
         currState = ChessGameState.IDLE;
+        Reward.SetActive(false);
         //BK_Pos = BK.transform;
     }
 

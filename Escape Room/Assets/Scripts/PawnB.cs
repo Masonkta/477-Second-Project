@@ -47,11 +47,14 @@ public class PawnB : MonoBehaviour
                 break;
             case State._4_WR:
                 if (lastSnapLocal == PawnBState.POS2SNAP1)
+                {
+                    print("I AM IN THE CORRECT STATE!");
                     ChangeState(State._5_BP);
+                }
                 break;
-            case State._5_BP: //Should never be reached, game is done.
+            case State._5_BP:
                 if (lastSnapLocal == PawnBState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                    ChangeState(State._5_BP);
                 break;
             case State.INCORRECT:
                 ChangeState(State.IDLE);
@@ -62,11 +65,11 @@ public class PawnB : MonoBehaviour
     private void ChangeState(State newState)
     {
         print($"Changing state to {newState}");
-        print("GLOBAL STATE CHECK: " +  chessGameLogic.GetComponent<ChessGameLogic>().currState);
         if (State != newState)
         {
             State = newState;
             chessGameLogic.GetComponent<ChessGameLogic>().currState = newState;
+            print("GLOBAL STATE CHECK: " + chessGameLogic.GetComponent<ChessGameLogic>().currState);
             switch (newState)
             {
                 case State.IDLE:
@@ -80,9 +83,10 @@ public class PawnB : MonoBehaviour
                     snap2.SetActive(true);
                     break;
                 case State._5_BP:
-                    //GameObject reward = GameObject.Find("Reward");
-                    //reward.SetActive(true);
                     print("FINISH ACHIEVED!");
+                    //GameObject reward = GameObject.Find("ChessTable/LensReward");
+                    chessGameLogic.GetComponent<ChessGameLogic>().Reward.SetActive(true);
+                    print("REWARD UNLOCKED!!");
                     break;
                 case State.ERROR:
                     print("ERROR");

@@ -208,6 +208,59 @@ Transform:
   - {fileID: 617819563146883194}
   m_Father: {fileID: 8427023157629436635}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1148941855057704541
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3357191125818570500}
+  - component: {fileID: 3501144464831504390}
+  m_Layer: 0
+  m_Name: ChessGameLogic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3357191125818570500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148941855057704541}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.50352114, y: -0.6350404, z: 0.33897024}
+  m_LocalScale: {x: 1.1809303, y: 1.1809303, z: 1.1809303}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5392323255878642624}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3501144464831504390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1148941855057704541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3055d07ffa39fb49b147286e28716da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BK: {fileID: 7841755971438643789}
+  WK: {fileID: 9127163944943239765}
+  BP: {fileID: 3851723245818174413}
+  WP: {fileID: 6821479185158538590}
+  BR: {fileID: 6095979026907552142}
+  WR: {fileID: 2358316803566575633}
+  mistakeMade: 0
+  correctCounter: 0
+  currState: 0
 --- !u!1 &1232825686807346939
 GameObject:
   m_ObjectHideFlags: 0
@@ -925,6 +978,7 @@ Transform:
   m_LocalScale: {x: 0.84679, y: 0.84679, z: 0.84679}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 3357191125818570500}
   - {fileID: 8427023157629436635}
   - {fileID: 6570151607689111060}
   m_Father: {fileID: 0}
@@ -1580,7 +1634,7 @@ Transform:
   m_GameObject: {fileID: 8132321900298874801}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.19570011, y: 0.019989278, z: -0.203}
+  m_LocalPosition: {x: -0.19570011, y: 0.019989278, z: -0.1417}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2091,6 +2145,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5392323255878642624}
     m_Modifications:
+    - target: {fileID: 233257335908223341, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7272c2e994849f645b48003a5f38008c, type: 2}
+    - target: {fileID: 429806844032938102, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7272c2e994849f645b48003a5f38008c, type: 2}
     - target: {fileID: 494509232049901924, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
       propertyPath: m_Name
       value: Chess Board and Pieces
@@ -2147,6 +2209,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1270163717890719190, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d273b8f37510c249bf0394de7313953, type: 2}
     - target: {fileID: 1452013038833660281, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
       propertyPath: m_Size.x
       value: 0.05
@@ -2199,6 +2265,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 0.025
       objectReference: {fileID: 0}
+    - target: {fileID: 2750119141169675476, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d273b8f37510c249bf0394de7313953, type: 2}
     - target: {fileID: 3053332351433250998, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
       propertyPath: m_IsKinematic
       value: 1
@@ -2215,6 +2285,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: BlackPawn
       objectReference: {fileID: 0}
+    - target: {fileID: 7130964781482118241, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4d273b8f37510c249bf0394de7313953, type: 2}
     - target: {fileID: 7824909269424693638, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.04507453
@@ -2223,6 +2297,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: -0.087
       objectReference: {fileID: 0}
+    - target: {fileID: 8953054961733995560, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7272c2e994849f645b48003a5f38008c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 3120190013832479063, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
@@ -2321,7 +2399,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd15c1a82367c0344b944c513166a8d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessGameLogic: {fileID: 0}
+  chessGameLogic: {fileID: 1148941855057704541}
   lastSnapLocal: 0
 --- !u!114 &3182611486788484385
 MonoBehaviour:
@@ -2462,7 +2540,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c4bb55bed2cb94098743752c28f873, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessGameLogic: {fileID: 0}
+  chessGameLogic: {fileID: 1148941855057704541}
   lastSnapLocal: 0
 --- !u!114 &6907754332861041071
 MonoBehaviour:
@@ -2608,7 +2686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 57e7bff2d25a3974595e1c57e86a787b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessGameLogic: {fileID: 0}
+  chessGameLogic: {fileID: 1148941855057704541}
   lastSnapLocal: 0
 --- !u!114 &1959286119617029392
 MonoBehaviour:
@@ -2732,6 +2810,11 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 0
+--- !u!1 &6821479185158538590 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2868519110867340379, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
+  m_PrefabInstance: {fileID: 8747615295510825221}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7841755971438643789 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1564515167764759368, guid: 8ebc482f364a0fe47a982d4e2f684435, type: 3}
@@ -2893,7 +2976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77cb0ac7572115741917011d8feeaeb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chessGameLogic: {fileID: 0}
+  chessGameLogic: {fileID: 1148941855057704541}
   lastSnapLocal: 0
 --- !u!114 &6809052982130097776
 MonoBehaviour:

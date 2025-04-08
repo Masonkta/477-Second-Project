@@ -36,10 +36,9 @@ public class RookB : MonoBehaviour
                 break;
             case State._1_BP:
                 if (lastSnapLocal == RookBState.POS1SNAP1)
-                    ChangeState(State._2_WK);
+                    ChangeState(State.INCORRECT);
                 break;
             case State._2_WK:
-                //NOTE: Might not need if statments for completly incorrect states? Only fires off once the piece is snapped, not constantly
                 if (lastSnapLocal == RookBState.POS1SNAP1)
                     ChangeState(State._3_BR);
                 else
@@ -66,11 +65,12 @@ public class RookB : MonoBehaviour
     private void ChangeState(State newState)
     {
         print($"Changing state to {newState}");
-        print("GLOBAL STATE CHECK: " + chessGameLogic.GetComponent<ChessGameLogic>().currState);
+        
         if (State != newState)
         {
             chessGameLogic.GetComponent<ChessGameLogic>().currState = newState;
             State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
+            print("GLOBAL STATE CHECK: " + chessGameLogic.GetComponent<ChessGameLogic>().currState);
             switch (newState)
             {
                 case State.IDLE:

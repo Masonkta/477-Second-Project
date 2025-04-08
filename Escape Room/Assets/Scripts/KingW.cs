@@ -27,10 +27,7 @@ public class KingW : MonoBehaviour
         {
             case State.IDLE:
                 if (lastSnapLocal == KingWState.POS1SNAP1)// Add a bunch of OR statments
-                {
-                    print("STATE IDLE: " + State);
                     ChangeState(State.INCORRECT);
-                }
                 else
                     ChangeState(State.ERROR);
                 break;
@@ -66,11 +63,12 @@ public class KingW : MonoBehaviour
     private void ChangeState(State newState)
     {
         print($"Changing state to {newState}");
-        print("GLOBAL STATE CHECK: " + chessGameLogic.GetComponent<ChessGameLogic>().currState);
+        
         if (State != newState)
         {
             chessGameLogic.GetComponent<ChessGameLogic>().currState = newState;
             State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
+            print("GLOBAL STATE CHECK: " + chessGameLogic.GetComponent<ChessGameLogic>().currState);
             switch (newState)
             {
                 case State.IDLE:
