@@ -12,7 +12,7 @@ public enum DoorState {
 
 public enum KeyColor {
     RED,
-    GREEN, 
+    YELLOW, 
     BLUE,
 }
 
@@ -26,6 +26,7 @@ public class Door : MonoBehaviour {
     private Dictionary<State, Action> stateEnterMethods;
     private Dictionary<State, Action> stateStayMethods;
     private Dictionary<State, Action> stateExitMethods;
+    private Transform fullDoor;
     #endregion
 
     // Start is called before the first frame update
@@ -46,6 +47,7 @@ public class Door : MonoBehaviour {
             [State.OPEN] = StateExitOpen,
         };
         CurState = State.CLOSED;
+        fullDoor = transform.parent;
     }
 
     // Update is called once per frame
@@ -73,8 +75,6 @@ public class Door : MonoBehaviour {
     }
     private void StateEnterOpening() {
         print("opening");
-        transform.Translate(Vector3.left);
-        ChangeState(State.OPEN);
     }
     private void StateEnterOpen() {
     }
@@ -84,6 +84,10 @@ public class Door : MonoBehaviour {
     private void StateStayClosed() {
     }
     private void StateStayOpening() {
+        fullDoor.Translate(Vector3.down * Time.deltaTime);
+        if (fullDoor.position.y < -6.5) {
+            ChangeState(State.OPEN);
+        }
     }
     private void StateStayOpen() {
         print("open");
