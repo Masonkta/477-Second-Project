@@ -4951,7 +4951,7 @@ Transform:
   m_GameObject: {fileID: 942605015}
   serializedVersion: 2
   m_LocalRotation: {x: 0.99999756, y: -0, z: 0.0022408795, w: 0}
-  m_LocalPosition: {x: -0.12932795, y: 0.008000016, z: 0.24337822}
+  m_LocalPosition: {x: 0.008, y: 0.008000016, z: 0.2502}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6665,7 +6665,7 @@ Transform:
   m_GameObject: {fileID: 1690993641}
   serializedVersion: 2
   m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: 0.004, y: 0.008, z: 0.245}
+  m_LocalPosition: {x: 0.008, y: 0.008, z: 0.2488}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6936,7 +6936,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 3.5e-44, z: 0, w: NaN}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -9133,7 +9133,7 @@ GameObject:
   - component: {fileID: 1930303891248801843}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Mallet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9572,7 +9572,19 @@ MonoBehaviour:
       m_Calls: []
   m_SelectEntered:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_SelectExited:
     m_PersistentCalls:
       m_Calls: []
@@ -9605,7 +9617,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 1
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -10085,8 +10097,9 @@ GameObject:
   - component: {fileID: 6020083158162731988}
   - component: {fileID: 4856190520181741751}
   - component: {fileID: 7527504302179333570}
+  - component: {fileID: 7527504302179333571}
   m_Layer: 0
-  m_Name: drum stick2
+  m_Name: Mallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10190,7 +10203,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -10254,8 +10267,8 @@ GameObject:
   - component: {fileID: 4768199161861922148}
   - component: {fileID: 3751959264788596755}
   - component: {fileID: 1688468533452318738}
-  - component: {fileID: 4768199161861922150}
   - component: {fileID: 4768199161861922149}
+  - component: {fileID: 4768199161861922150}
   - component: {fileID: 4768199161861922151}
   m_Layer: 0
   m_Name: Bar 5 (Sol, G)
@@ -10519,8 +10532,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_InteractionManager: {fileID: 1236500983}
+  m_Colliders:
+  - {fileID: 1688468533452318738}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -10591,6 +10605,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7958b2dd51393440a7fa43fade0e5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barNumber: 0
 --- !u!1 &4843750179486997559
 GameObject:
   m_ObjectHideFlags: 0
@@ -10689,7 +10704,7 @@ MonoBehaviour:
   m_SnapToColliderVolume: 1
   m_ReinitializeDynamicAttachEverySingleGrab: 1
   m_AttachEaseInTime: 0.15
-  m_MovementType: 1
+  m_MovementType: 2
   m_VelocityDamping: 1
   m_VelocityScale: 1
   m_AngularVelocityDamping: 1
@@ -10745,7 +10760,7 @@ GameObject:
   - component: {fileID: 9145462797803145158}
   m_Layer: 0
   m_Name: Plane
-  m_TagString: Untagged
+  m_TagString: Mallet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10990,8 +11005,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_InteractionManager: {fileID: 1236500983}
+  m_Colliders:
+  - {fileID: 4032971262513670017}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -11061,7 +11077,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 84e609079b46ba8479c410f8b45c4089, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -11158,6 +11174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7958b2dd51393440a7fa43fade0e5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barNumber: 0
 --- !u!4 &5815678251945919245
 Transform:
   m_ObjectHideFlags: 0
@@ -11196,7 +11213,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -11257,8 +11274,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_InteractionManager: {fileID: 1236500983}
+  m_Colliders:
+  - {fileID: 6173832997595264985}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -11328,7 +11346,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f4ec20cae397df74689f4119b1d0da50, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -11425,6 +11443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7958b2dd51393440a7fa43fade0e5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barNumber: 0
 --- !u!23 &6210958751507338163
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -11522,7 +11541,7 @@ GameObject:
   - component: {fileID: 2830023428049106754}
   - component: {fileID: 888886547602250295}
   m_Layer: 0
-  m_Name: 'drum stick2 '
+  m_Name: Mallet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11828,6 +11847,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0208354, y: 0.01518786, z: 0.27774858}
   m_Center: {x: -0.00050091743, y: -0.00057047606, z: 0.11112571}
+--- !u!114 &7527504302179333571
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3666719515021675054}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7958b2dd51393440a7fa43fade0e5fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barNumber: 0
 --- !u!4 &7637807266579835066
 Transform:
   m_ObjectHideFlags: 0
@@ -12026,8 +12058,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_InteractionManager: {fileID: 1236500983}
+  m_Colliders:
+  - {fileID: 2642176997702426832}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -12194,6 +12227,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7958b2dd51393440a7fa43fade0e5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barNumber: 0
 --- !u!64 &8322636354757819984
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12228,6 +12262,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b794620f1236b4dbad1d13ed0af699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClip:
+  - {fileID: 8300000, guid: f4ec20cae397df74689f4119b1d0da50, type: 3}
+  - {fileID: 8300000, guid: 84e609079b46ba8479c410f8b45c4089, type: 3}
+  - {fileID: 8300000, guid: a2e71f1b9dcff7f4794ca4af7ac10ad6, type: 3}
+  - {fileID: 8300000, guid: 108c68ddb1b282c48a81b0840a057792, type: 3}
+  - {fileID: 8300000, guid: e47eb0be553fa094dbdbcb4c5289132d, type: 3}
 --- !u!23 &8625612678226639004
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12349,8 +12389,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a35f6cfbfba9b548aaa00d52cfe8a50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_InteractionManager: {fileID: 0}
-  m_Colliders: []
+  m_InteractionManager: {fileID: 1236500983}
+  m_Colliders:
+  - {fileID: 3102987537975827895}
   m_InteractionLayers:
     m_Bits: 1
   m_DistanceCalculationMode: 1
@@ -12517,6 +12558,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7958b2dd51393440a7fa43fade0e5fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  barNumber: 0
 --- !u!4 &8885331020317774557
 Transform:
   m_ObjectHideFlags: 0

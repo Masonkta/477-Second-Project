@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class Xylophone : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    public AudioClip[] audioClip;
+    private AudioSource audioSource;
+
+    private void Start(){
+        Notes.OnBarHit += PlaySound;
+        audioSource = GetComponent<AudioSource> ();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    private void OnDestroy(){
+        Notes.OnBarHit -= PlaySound;
     }
+
+    public void PlaySound(int barNumber){
+
+        int index = barNumber - 1;
+
+      if (index >= 0 && index < audioClip.Length)
+        {
+            audioSource.PlayOneShot(audioClip[index]);
+        }
+    }
+    
 }

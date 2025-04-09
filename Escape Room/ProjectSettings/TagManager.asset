@@ -9,6 +9,7 @@ TagManager:
   - Door
   - Light Area
   - Door Key
+  - Mallet
   layers:
   - Default
   - TransparentFX
