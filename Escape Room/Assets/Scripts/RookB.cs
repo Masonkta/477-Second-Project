@@ -87,6 +87,8 @@ public class RookB : MonoBehaviour
                     print("ERROR");
                     break;
                 case State.INCORRECT:
+                    chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
+
                     print("WRONG MOVE!!!!");
                     break;
             }

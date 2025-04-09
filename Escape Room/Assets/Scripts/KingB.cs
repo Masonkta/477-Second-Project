@@ -6,6 +6,7 @@ using State = ChessGameState;
 public class KingB : MonoBehaviour
 {
     public State State { get; private set; }
+    public GameObject chessGameLogic;
     private KingBState lastSnap;
     // Start is called before the first frame update
     void Start()
@@ -69,7 +70,9 @@ public class KingB : MonoBehaviour
                     print("FINISH ACHIEVED!");
                     break;
                 case State.INCORRECT:
-                    print("INCORRECT MOVE!");
+                    chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
+
+                    print("WRONG MOVE!!!!");
                     break;
             }
         }

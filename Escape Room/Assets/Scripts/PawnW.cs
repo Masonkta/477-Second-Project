@@ -2,89 +2,87 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using State = ChessGameState;
-public class KingW : MonoBehaviour
+public class PawnW : MonoBehaviour
 {
     public State State { get; private set; }
     public GameObject chessGameLogic;
-    public KingWState lastSnapLocal;
+    public PawnWState lastSnapLocal;
     // Start is called before the first frame update
     void Start()
     {
-        lastSnapLocal = KingWState.NONE;
+        lastSnapLocal = PawnWState.NONE;
         State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
-        print("STARTING STATE: " + State);
         print("Starting");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lastSnapLocal == KingWState.NONE)
+        if (lastSnapLocal == PawnWState.NONE)
         {
             return;
         }
         switch (State = chessGameLogic.GetComponent<ChessGameLogic>().currState)
         {
             case State.IDLE:
-                if (lastSnapLocal == KingWState.POS1SNAP1)// Add a bunch of OR statments
+                if (lastSnapLocal == PawnWState.POS1SNAP1)
                     ChangeState(State.INCORRECT);
                 else
                     ChangeState(State.ERROR);
                 break;
             case State._1_BP:
-                if (lastSnapLocal == KingWState.POS1SNAP1)
-                    ChangeState(State._2_WK);
+                if (lastSnapLocal == PawnWState.POS2SNAP1)
+                    ChangeState(State.INCORRECT);
                 break;
             case State._2_WK:
-                //NOTE: Might not need if statments for completly incorrect states? Only fires off once the piece is snapped, not constantly
-                if (lastSnapLocal == KingWState.POS2SNAP1)
+                if (lastSnapLocal == PawnWState.POS2SNAP1)
                     ChangeState(State.INCORRECT);
                 else
                     ChangeState(State.ERROR);
                 break;
             case State._3_BR:
-                if (lastSnapLocal == KingWState.POS2SNAP1)
+                if (lastSnapLocal ==    PawnWState.POS2SNAP1)
                     ChangeState(State.INCORRECT);
                 break;
             case State._4_WR:
-                if (lastSnapLocal == KingWState.POS2SNAP1)
+                if (lastSnapLocal == PawnWState.POS2SNAP1)
                     ChangeState(State.INCORRECT);
                 break;
             case State._5_BP:
-                if (lastSnapLocal == KingWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                if (lastSnapLocal == PawnWState.POS2SNAP1)
+                    ChangeState(State._5_BP);
                 break;
             case State.INCORRECT:
                 ChangeState(State.IDLE);
                 break;
         }
-        lastSnapLocal = KingWState.NONE;
+        lastSnapLocal = PawnWState.NONE;
     }
     private void ChangeState(State newState)
     {
         print($"Changing state to {newState}");
-        
         if (State != newState)
         {
+            State = newState;
             chessGameLogic.GetComponent<ChessGameLogic>().currState = newState;
-            State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
             print("GLOBAL STATE CHECK: " + chessGameLogic.GetComponent<ChessGameLogic>().currState);
             switch (newState)
             {
                 case State.IDLE:
                     // do nothing
                     break;
-                case State._2_WK:
+                case State._1_BP:
                     //ENABLE NEXT SNAP SET
-                    GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/WKSnaps1");
+                    GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps1");
                     snaps1.SetActive(false);
-                    GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/WKSnaps2");
+                    GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps2");
                     snap2.SetActive(true);
                     break;
                 case State._5_BP:
-                    //GameObject reward = GameObject.Find("Reward");
-                    //reward.SetActive(true);
                     print("FINISH ACHIEVED!");
+                    //GameObject reward = GameObject.Find("ChessTable/LensReward");
+                    chessGameLogic.GetComponent<ChessGameLogic>().Reward.SetActive(true);
+                    print("REWARD UNLOCKED!!");
                     break;
                 case State.ERROR:
                     print("ERROR");
@@ -101,21 +99,21 @@ public class KingW : MonoBehaviour
     {
         print("SNAPPED");
         print(lastSnapLocal);
-        lastSnapLocal = KingWState.POS1SNAP1;
+        lastSnapLocal = PawnWState.POS1SNAP1;
         print(lastSnapLocal);
     }
     private void Snap1INCORRECT()
     {
         print("SNAPPED");
         print(lastSnapLocal);
-        lastSnapLocal = KingWState.POS1INCORRECT;
+        lastSnapLocal = PawnWState.POS1INCORRECT;
         print(lastSnapLocal);
     }
     private void Snap2Pos1()
     {
         print("SNAPPED");
         print(lastSnapLocal);
-        lastSnapLocal = KingWState.POS2SNAP1;
+        lastSnapLocal = PawnWState.POS2SNAP1;
         //lastSnap = SnapStates.POS1SNAP1;
         print("lastSnap Change");
         print(lastSnapLocal);
