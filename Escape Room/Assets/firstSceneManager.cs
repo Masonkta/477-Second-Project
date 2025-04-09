@@ -11,9 +11,11 @@ public class firstSceneManager : MonoBehaviour
     public bool doorOpening;
     public float doorSpeed = 1f;
     public XRKnob doorLeverKnobScript;
+    public XRKnob needleKnobScript;
 
     [Header("Conditions For Door")]
     public bool coinOn;
+    public bool needleInCorrectPosition;
     public bool canFlipLever;
     [Header("Stuff")]
     
@@ -41,8 +43,9 @@ public class firstSceneManager : MonoBehaviour
     void checkCondition(){
         // Debug.Log(Vector3.Distance(coin.transform.position, correctHook.transform.position));
         coinOn = Vector3.Distance(coin.transform.position, correctHook.transform.position) < 0.16f && coinRb.isKinematic;
+        needleInCorrectPosition = needleKnobScript.value > 0f ? (needleKnobScript.value % 1f) > 0.75f : (-needleKnobScript.value % 1f) < 0.25f;
 
-        canFlipLever = coinOn;
+        canFlipLever = coinOn & needleInCorrectPosition;
     }
 
     void freezeLever(){
@@ -57,8 +60,8 @@ public class firstSceneManager : MonoBehaviour
             doorOpening = true;
 
         if (doorOpening)
-            if (door.transform.localPosition.y > -0.635f)
-                door.transform.Translate(door.transform.up * Time.deltaTime * doorSpeed);
+            if (door.transform.localPosition.y > -1.95f)
+                door.transform.Translate(door.transform.up * -1f * Time.deltaTime * doorSpeed);
         
                 
     }
