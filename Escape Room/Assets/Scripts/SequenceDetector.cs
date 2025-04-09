@@ -3,8 +3,19 @@ using UnityEngine;
 
 public class SequenceChecker : MonoBehaviour
 {
-    // correct sequence
+    private enum State
+    {
+        WaitingForInput,
+        Success, // if player does the correct sequence
+        Failure // checks if player makes mistake
+    }
+
+    // starts in waiting for input
+    private State currentState = State.WaitingForInput;
+
+    // sequence that player must enter
     private readonly List<int> correctSequence = new List<int> { 5, 3, 2, 1, 4 };
+    // tracks player input
     private List<int> playerInput = new List<int>();
 
     private void OnEnable()
@@ -17,27 +28,51 @@ public class SequenceChecker : MonoBehaviour
         Notes.OnBarHit -= CheckInput;
     }
 
+    // for xylo. bar hits
     private void CheckInput(int barNumber)
+    {
+        switch (currentState)
+        {
+            // handles input if waiting state
+            case State.WaitingForInput:
+                HandleInput(barNumber);
+                break;
+
+            case State.Success:
+            case State.Failure:
+                ResetFSM(); // clears input and resets state
+                HandleInput(barNumber); 
+                break;
+        }
+    }
+
+    private void HandleInput(int barNumber)
     {
         playerInput.Add(barNumber);
 
-       
+        // check if sequence is correct so far
         for (int i = 0; i < playerInput.Count; i++)
         {
             if (playerInput[i] != correctSequence[i])
             {
-                Debug.Log("Wrong sequence");
-                playerInput.Clear();
+                Debug.Log("Wrong sequence.");
+                currentState = State.Failure;
                 return;
             }
         }
 
-       // check if sequence is correct
-    
+        // sequence is correct
         if (playerInput.Count == correctSequence.Count)
         {
-            Debug.Log("Testing sequence");
-            playerInput.Clear(); 
+            Debug.Log("Correct sequence.");
+            currentState = State.Success; // successful
         }
+    }
+
+    // resets state and clears input
+    private void ResetFSM()
+    {
+        playerInput.Clear();
+        currentState = State.WaitingForInput;
     }
 }

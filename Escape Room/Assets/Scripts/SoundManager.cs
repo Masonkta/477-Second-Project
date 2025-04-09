@@ -6,6 +6,11 @@ using UnityEngine;
 public enum SoundType {
     CLICK,
     SOLVED,
+    NOTE_C,
+    NOTE_D,
+    NOTE_E,
+    NOTE_F,
+    NOTE_G,
 }
 
 public class SoundCollection {
@@ -54,11 +59,20 @@ public class SoundManager : MonoBehaviour {
     private void Awake() {
         Instance = this;
         audioSrc = GetComponent<AudioSource>();
-        sounds = new() {
-            { SoundType.CLICK, new("clicks/click_1","clicks/click_2","clicks/click_3","clicks/click_4") },
-            { SoundType.SOLVED, new("solved") },
+       sounds = new Dictionary<SoundType, SoundCollection> {
+    { SoundType.CLICK, new SoundCollection("clicks/click_1", "clicks/click_2", "clicks/click_3", "clicks/click_4") },
+    { SoundType.SOLVED, new SoundCollection("solved") },
+
+    // xylophone notes
+    { SoundType.NOTE_C, new SoundCollection("notes/C") },
+    { SoundType.NOTE_D, new SoundCollection("notes/D") },
+    { SoundType.NOTE_E, new SoundCollection("notes/E") },
+    { SoundType.NOTE_F, new SoundCollection("notes/F") },
+    { SoundType.NOTE_G, new SoundCollection("notes/G") }, 
         };
-    }
+
+     }
+    
 
     public void Play(SoundType type, AudioSource audioSrc = null) {
         if (sounds.ContainsKey(type)) {
