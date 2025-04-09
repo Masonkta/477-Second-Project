@@ -6011,6 +6011,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 486817540741718359, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      propertyPath: m_FarAttachMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1691975816729852889, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3005238574316332344, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
       propertyPath: camTransform
       value: 
@@ -6018,6 +6026,22 @@ PrefabInstance:
     - target: {fileID: 3192853139146684590, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
       propertyPath: m_Name
       value: Bronze Mirror
+      objectReference: {fileID: 0}
+    - target: {fileID: 4352320489943547340, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022766064065192527, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5468065828288452571, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8524214348228286121, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8778967909896893745, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6430,34 +6454,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2517525250791483596, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 3.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696243080177391875, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696243080177391875, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696243080177391875, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696243080177391875, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5696243080177391875, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6933206122228515302, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
       propertyPath: m_Name
       value: Custom Player (XR ORIGIN)
       objectReference: {fileID: 0}
+    - target: {fileID: 8563854283201709586, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: feca5387d376d7f4baa2f85a88d47e09, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
