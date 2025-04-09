@@ -16,7 +16,6 @@ public class LightBeam : MonoBehaviour {
     public State CurState { get; private set; }
     public GameObject lightObj;
     public KeyColor color;
-    public Material colorRend;
     #endregion
 
     #region privates
@@ -41,7 +40,6 @@ public class LightBeam : MonoBehaviour {
             [State.ON] = StateExitOn,
         };
         CurState = State.OFF;
-        lightObj.GetComponent<ParticleSystemRenderer>().material = colorRend;
     }
 
     // Update is called once per frame
