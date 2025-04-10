@@ -12,7 +12,9 @@ public enum LightRoomState {
 
 public class LightRoom : MonoBehaviour {
 
+    #region publics
     public State CurState { get; private set; }
+    public static LightRoom Lightroom { get; private set; }
     public GameObject blueLens;
     public GameObject blueDoor;
     public GameObject redLens;
@@ -20,15 +22,18 @@ public class LightRoom : MonoBehaviour {
     public GameObject yellowLens;
     public GameObject yellowDoor;
     public GameObject lensSpawn;
-    public GameObject outside;
     public bool chessFinished;
     public bool numFinished;
+    #endregion
 
+    #region privates
     private Dictionary<State, Action> stateEnterMethods;
     private Dictionary<State, Action> stateStayMethods;
     private Dictionary<State, Action> stateExitMethods;
+    #endregion
 
     void Start() {
+        Lightroom = this;
         stateEnterMethods = new() {
             [State.INIT] = StateEnterINIT,
             [State.FIRST] = StateEnterFIRST,
@@ -47,8 +52,11 @@ public class LightRoom : MonoBehaviour {
         CurState = State.INIT;
 
         blueLens.transform.position = lensSpawn.transform.position;
-        redLens.transform.position = outside.transform.position;
-        yellowDoor.transform.position = outside.transform.position;
+        redLens.transform.position = lensSpawn.transform.position;
+        redLens.SetActive(false);
+        yellowLens.transform.position = lensSpawn.transform.position;
+        yellowLens.SetActive(false);
+        // do not destroy?
     }
 
     void Update() {
@@ -74,15 +82,15 @@ public class LightRoom : MonoBehaviour {
     }
     private void StateEnterFIRST() {
         blueDoor.transform.position = new Vector3(4, -7.66f, -6);
-        blueLens.transform.position = outside.transform.position;
-        redLens.transform.position = lensSpawn.transform.position;
+        blueLens.SetActive(false);
+        redLens.SetActive(true);
     }
     private void StateEnterSECOND() {
         blueDoor.transform.position = new Vector3(4, -7.66f, -6);
         redDoor.transform.position = new Vector3(-6, -7.66f, 4);
-        blueLens.transform.position = outside.transform.position;
-        redLens.transform.position = outside.transform.position;
-        yellowLens.transform.position = lensSpawn.transform.position;
+        redLens.SetActive(false);
+        blueLens.SetActive(false);
+        yellowLens.SetActive(true);
     }
     #endregion
 
