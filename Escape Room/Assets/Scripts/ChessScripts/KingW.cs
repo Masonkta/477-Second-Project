@@ -68,6 +68,7 @@ public class KingW : MonoBehaviour
                     // do nothing
                     break;
                 case State._2_WK:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     //ENABLE NEXT SNAP SET
                     GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/WKSnaps1");
                     snaps1.SetActive(false);
@@ -75,6 +76,7 @@ public class KingW : MonoBehaviour
                     snap2.SetActive(true);
                     break;
                 case State._5_BP:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     //GameObject reward = GameObject.Find("Reward");
                     //reward.SetActive(true);
                     print("FINISH ACHIEVED!");
@@ -83,6 +85,7 @@ public class KingW : MonoBehaviour
                     print("ERROR");
                     break;
                 case State.INCORRECT:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
 
                     print("WRONG MOVE!!!!");

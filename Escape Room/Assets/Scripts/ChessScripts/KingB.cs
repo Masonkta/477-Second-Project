@@ -61,19 +61,8 @@ public class KingB : MonoBehaviour
                 case State.IDLE:
                     // do nothing
                     break;
-                case State._1_BP:
-                    //ENABLE NEXT SNAP SET
-                    GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps1");
-                    snaps1.SetActive(false);
-                    GameObject snap2 = GameObject.Find("ChessTable/Chess Board and Pieces/BKSnaps2");
-                    snap2.SetActive(true);
-                    break;
-                case State._2_Pos2Snap1_FINISH:
-                    //GameObject reward = GameObject.Find("Reward");
-                    //reward.SetActive(true);
-                    print("FINISH ACHIEVED!");
-                    break;
                 case State.INCORRECT:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
 
                     print("WRONG MOVE!!!!");

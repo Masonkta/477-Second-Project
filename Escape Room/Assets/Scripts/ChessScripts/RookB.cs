@@ -67,6 +67,7 @@ public class RookB : MonoBehaviour
                     // do nothing
                     break;
                 case State._3_BR:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     //ENABLE NEXT SNAP SET
                     GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BRSnaps1");
                     snaps1.SetActive(false);
@@ -77,6 +78,7 @@ public class RookB : MonoBehaviour
                     print("ERROR");
                     break;
                 case State.INCORRECT:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
 
                     print("WRONG MOVE!!!!");

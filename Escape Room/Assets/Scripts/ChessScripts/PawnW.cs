@@ -62,6 +62,7 @@ public class PawnW : MonoBehaviour
                     // do nothing
                     break;
                 case State._1_BP:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     //ENABLE NEXT SNAP SET
                     GameObject snaps1 = GameObject.Find("ChessTable/Chess Board and Pieces/BPSnaps1");
                     snaps1.SetActive(false);
@@ -69,15 +70,13 @@ public class PawnW : MonoBehaviour
                     snap2.SetActive(true);
                     break;
                 case State._5_BP:
-                    print("FINISH ACHIEVED!");
-                    //GameObject reward = GameObject.Find("ChessTable/LensReward");
-                    chessGameLogic.GetComponent<ChessGameLogic>().Reward.SetActive(true);
-                    print("REWARD UNLOCKED!!");
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     break;
                 case State.ERROR:
                     print("ERROR");
                     break;
                 case State.INCORRECT:
+                    ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
 
                     print("WRONG MOVE!!!!");
