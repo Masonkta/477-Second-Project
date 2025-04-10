@@ -25,32 +25,22 @@ public class PawnW : MonoBehaviour
         switch (State = chessGameLogic.GetComponent<ChessGameLogic>().currState)
         {
             case State.IDLE:
-                if (lastSnapLocal == PawnWState.POS1SNAP1)
-                    ChangeState(State.INCORRECT);
-                else
-                    ChangeState(State.ERROR);
+                ChangeState(State.INCORRECT);
                 break;
             case State._1_BP:
-                if (lastSnapLocal == PawnWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._2_WK:
-                if (lastSnapLocal == PawnWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
-                else
-                    ChangeState(State.ERROR);
+                ChangeState(State.INCORRECT);
                 break;
             case State._3_BR:
-                if (lastSnapLocal ==    PawnWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._4_WR:
-                if (lastSnapLocal == PawnWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._5_BP:
-                if (lastSnapLocal == PawnWState.POS2SNAP1)
-                    ChangeState(State._5_BP);
+                ChangeState(State.INCORRECT);
                 break;
             case State.INCORRECT:
                 ChangeState(State.IDLE);

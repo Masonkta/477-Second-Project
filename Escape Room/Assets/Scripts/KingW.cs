@@ -26,10 +26,7 @@ public class KingW : MonoBehaviour
         switch (State = chessGameLogic.GetComponent<ChessGameLogic>().currState)
         {
             case State.IDLE:
-                if (lastSnapLocal == KingWState.POS1SNAP1)// Add a bunch of OR statments
-                    ChangeState(State.INCORRECT);
-                else
-                    ChangeState(State.ERROR);
+                ChangeState(State.INCORRECT);
                 break;
             case State._1_BP:
                 if (lastSnapLocal == KingWState.POS1SNAP1)
@@ -39,25 +36,19 @@ public class KingW : MonoBehaviour
                     break;
             case State._2_WK:
                 //NOTE: Might not need if statments for completly incorrect states? Only fires off once the piece is snapped, not constantly
-                if (lastSnapLocal == KingWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
-                else
-                    ChangeState(State.ERROR);
+                ChangeState(State.INCORRECT);
                 break;
             case State._3_BR:
-                if (lastSnapLocal == KingWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._4_WR:
-                if (lastSnapLocal == KingWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._5_BP:
-                if (lastSnapLocal == KingWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State.INCORRECT:
-                ChangeState(State.IDLE);
+                ChangeState(State.INCORRECT);
                 break;
         }
         lastSnapLocal = KingWState.NONE;
