@@ -47,7 +47,7 @@ public class Door : MonoBehaviour {
             [State.OPEN] = StateExitOpen,
         };
         CurState = State.CLOSED;
-        fullDoor = transform.parent;
+        fullDoor = transform;
     }
 
     // Update is called once per frame
@@ -58,7 +58,6 @@ public class Door : MonoBehaviour {
     }
 
     public void ChangeState(State NewState) {
-        print("changing");
         if (CurState != NewState) {
             if (stateExitMethods.ContainsKey(CurState)) {
                 stateExitMethods[CurState]();
@@ -85,7 +84,7 @@ public class Door : MonoBehaviour {
     }
     private void StateStayOpening() {
         fullDoor.Translate(Vector3.down * Time.deltaTime);
-        if (fullDoor.position.y < -6.5) {
+        if (fullDoor.position.y < -5) {
             ChangeState(State.OPEN);
         }
     }
