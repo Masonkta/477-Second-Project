@@ -11,8 +11,10 @@ public class Notes : MonoBehaviour
     {
         if (collision.gameObject.tag.Equals("Mallet"))
         {
+        var audioSrc = GetComponent<AudioSource>();
+        audioSrc?.Play(); 
            Debug.Log("Playing note: " + barNumber);
-            OnBarHit(barNumber);
+           // OnBarHit(barNumber);
         }
     }
     
