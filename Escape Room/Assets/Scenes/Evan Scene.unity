@@ -1883,7 +1883,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6933206122228515302, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4252,7 +4252,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!223 &487085498
 Canvas:
   m_ObjectHideFlags: 0
@@ -7162,6 +7162,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOver: 0
+  player: {fileID: 0}
   playerCamera: {fileID: 0}
   leftStickPressed: 0
   rightStickPressed: 0
@@ -7176,7 +7177,7 @@ Transform:
   m_GameObject: {fileID: 890139969}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.849182, y: 12.824139, z: 0.0002696514}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10582,6 +10583,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1399446504}
   - component: {fileID: 1399446505}
+  - component: {fileID: 1399446506}
   m_Layer: 0
   m_Name: First Scene Manager
   m_TagString: Untagged
@@ -10633,6 +10635,19 @@ MonoBehaviour:
   needleKnobScript: {fileID: 6530887418068319784}
   correctSpotForCube: {fileID: 1154701699}
   handHeldCube: {fileID: 904295620}
+--- !u!114 &1399446506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1399446503}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7082092ebdda5774f807a22a8828b27b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainVolume: 1
 --- !u!1 &1457040900
 GameObject:
   m_ObjectHideFlags: 0
@@ -17203,10 +17218,6 @@ PrefabInstance:
     - target: {fileID: 6933206122228515302, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
       propertyPath: m_Name
       value: Custom Player (XR ORIGIN)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6933206122228515302, guid: a59225dda542a064896b17bc1ed0cf84, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

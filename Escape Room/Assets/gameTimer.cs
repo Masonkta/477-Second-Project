@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.XR;
 
 public class gameTimer : MonoBehaviour
@@ -29,6 +30,7 @@ public class gameTimer : MonoBehaviour
 
     void Start()
     {
+        print("START");
         player = GameObject.FindGameObjectWithTag("Player");
         playerCamera = player.transform.Find("Camera Offset").transform.Find("Main Camera");   
     }
@@ -37,13 +39,32 @@ public class gameTimer : MonoBehaviour
     {
         InputDevices.deviceConnected += OnDeviceConnected;
         InputDevices.deviceDisconnected += OnDeviceDisconnected;
-        InitializeControllers();
+        InitializeControllers();// Subscribe to the sceneLoaded event
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
         InputDevices.deviceConnected -= OnDeviceConnected;
         InputDevices.deviceDisconnected -= OnDeviceDisconnected;
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+    
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        // This runs once after a new scene is loaded
+        // Debug.Log("New scene loaded: " + scene.name);
+
+        // Perform any first-frame actions here
+        PerformFirstFrameAction();
+    }
+
+    void PerformFirstFrameAction()
+    {
+        // Any logic you want to execute on the first frame
+        Debug.Log("NEW SCENE");
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerCamera = player.transform.Find("Camera Offset").transform.Find("Main Camera"); 
     }
 
     void InitializeControllers()
