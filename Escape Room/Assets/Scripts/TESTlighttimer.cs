@@ -6,7 +6,7 @@ using UnityEngine.Video;
 public class TESTlighttimer : MonoBehaviour {
     public ParticleSystem lighting;
 
-    private float maxTime = 100f;
+    private float timeElaps;
     private float lightingR = 11;
     private float lightingAng = 40;
     // Start is called before the first frame update
@@ -14,6 +14,7 @@ public class TESTlighttimer : MonoBehaviour {
         var shape = lighting.shape;
         shape.radius = lightingR;
         shape.angle = lightingAng;
+        timeElaps = GetComponent<gameTimer>().elapsedTime;
     }
 
     // Update is called once per frame
@@ -21,7 +22,7 @@ public class TESTlighttimer : MonoBehaviour {
         var shape = lighting.shape;
 
         if (shape.angle > 0) { 
-            lightingAng -= ((maxTime - Time.deltaTime) / (maxTime * 100));
+            lightingAng -= timeElaps;
             shape.angle = lightingAng;
         } else {
             if (lightingR <= 0.005) {
@@ -29,7 +30,7 @@ public class TESTlighttimer : MonoBehaviour {
                 print("off");
             }
             else {
-                lightingR -= ((maxTime - Time.deltaTime) / (maxTime * 100));
+                lightingR -= timeElaps;
             }
             shape.radius = lightingR;
         }

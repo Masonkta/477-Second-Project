@@ -22,8 +22,6 @@ public class LightRoom : MonoBehaviour {
     public GameObject yellowLens;
     public GameObject yellowDoor;
     public GameObject lensSpawn;
-    public bool chessFinished;
-    public bool numFinished;
     #endregion
 
     #region privates
@@ -31,6 +29,10 @@ public class LightRoom : MonoBehaviour {
     private Dictionary<State, Action> stateStayMethods;
     private Dictionary<State, Action> stateExitMethods;
     #endregion
+
+    private void Awake() {
+        DontDestroyOnLoad(gameObject);
+    }
 
     void Start() {
         Lightroom = this;
@@ -56,7 +58,6 @@ public class LightRoom : MonoBehaviour {
         redLens.SetActive(false);
         yellowLens.transform.position = lensSpawn.transform.position;
         yellowLens.SetActive(false);
-        // do not destroy?
     }
 
     void Update() {
