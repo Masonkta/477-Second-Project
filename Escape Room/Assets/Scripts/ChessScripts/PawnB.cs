@@ -5,12 +5,17 @@ using static UnityEditor.Rendering.InspectorCurveEditor;
 using State = ChessGameState;
 public class PawnB : MonoBehaviour
 {
+    public GameObject Door;
+    public LightRoom lightscript;
     public State State { get; private set; }
     public GameObject chessGameLogic;
     public PawnBState lastSnapLocal;
     // Start is called before the first frame update
+
     void Start()
     {
+        Door = GameObject.Find("DoorLogic");
+        lightscript = Door.GetComponent<LightRoom>();
         lastSnapLocal = PawnBState.NONE;
         State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
         print("Starting");
@@ -95,6 +100,7 @@ public class PawnB : MonoBehaviour
                     break;
                 case State.INCORRECT:
                     ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
+                    lightscript.chessPuz = true;
                     chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
 
                     print("WRONG MOVE!!!!");
