@@ -14,7 +14,7 @@ public class Notes : MonoBehaviour
         var audioSrc = GetComponent<AudioSource>();
         audioSrc?.Play(); 
            Debug.Log("Playing note: " + barNumber);
-           // OnBarHit(barNumber);
+           OnBarHit(barNumber);
         }
     }
     
