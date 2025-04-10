@@ -13,6 +13,7 @@ public class firstSceneManager : MonoBehaviour
     public bool doorOpening;
     public float doorSpeed = 1f;
     public bool teleporting = false;
+    bool teleported = false;
     public Image fadeOutScreen;
 
     [Header("Conditions For Door")]
@@ -84,9 +85,11 @@ public class firstSceneManager : MonoBehaviour
             temp.a += Time.deltaTime * 1 / 0.3f;
             fadeOutScreen.color = temp;
         }
-        else
 
+        if (fadeOutScreen.color.a >= 1f && !teleported){
+            teleported = true;
             SceneManager.LoadScene("Logan (light puzzle)");
+        }
 
     }
 
