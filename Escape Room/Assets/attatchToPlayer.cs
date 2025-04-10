@@ -11,6 +11,7 @@ public class attatchToPlayer : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerCamera = player.transform.Find("Camera Offset").transform.Find("Main Camera");   
+        
     }
 
     // Update is called once per frame

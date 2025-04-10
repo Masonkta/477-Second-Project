@@ -117,6 +117,8 @@ public class gameTimer : MonoBehaviour
         Time.timeScale = rightStickPressed ? 60f : 1f;
         elapsedTime += Time.deltaTime;
         gameOver = elapsedTime > 20f * 60f;
+        if (gameOver)
+            Time.timeScale = 1f;
 
         if (gameOver)
             killPlayer();
@@ -129,8 +131,11 @@ public class gameTimer : MonoBehaviour
                 hasStartedRumbling = true;
                 rumblingSound.Play();
             }
-            else
+            else{
+                Scene activeScene = SceneManager.GetActiveScene();
+                SceneManager.MoveGameObjectToScene(gameObject, activeScene);
                 SceneManager.LoadScene("GameOver");
+            }
         }
 
         if (playerInput.enabled){
