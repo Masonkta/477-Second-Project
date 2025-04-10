@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Rendering.InspectorCurveEditor;
+// using static UnityEditor.Rendering.InspectorCurveEditor;
 using State = ChessGameState;
 public class PawnB : MonoBehaviour
 {
