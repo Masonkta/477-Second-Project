@@ -74,9 +74,10 @@ public class SoundManager : MonoBehaviour {
      }
     
 
-    public void Play(SoundType type, AudioSource audioSrc = null) {
+    public void Play(SoundType type, AudioSource overrideSource = null) {
         if (sounds.ContainsKey(type)) {
-            audioSrc ??= this.audioSrc;
+
+            var source = overrideSource ?? audioSrc;
             audioSrc.volume = Random.Range(0.70f, 1.0f) * mainVolume;
             audioSrc.pitch = Random.Range(0.75f, 1.25f);
             audioSrc.clip = sounds[type].GetRandClip();

@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
+
 
 public class SequenceChecker : MonoBehaviour
 {
@@ -18,12 +20,14 @@ public class SequenceChecker : MonoBehaviour
     // tracks player input
     private List<int> playerInput = new List<int>();
 
-    private void OnEnable()
+
+    private void Start()
     {
         Notes.OnBarHit += CheckInput;
+        Debug.Log("working");
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         Notes.OnBarHit -= CheckInput;
     }
@@ -57,6 +61,7 @@ public class SequenceChecker : MonoBehaviour
             {
                 Debug.Log("Wrong sequence.");
                 currentState = State.Failure;
+                ResetFSM(); // clears input
                 return;
             }
         }
@@ -66,7 +71,12 @@ public class SequenceChecker : MonoBehaviour
         {
             Debug.Log("Correct sequence.");
             currentState = State.Success; // successful
+
+        
+            // plays beat back after completing
+            SoundManager.Instance.Play(SoundType.SOLVED);
         }
+
     }
 
     // resets state and clears input

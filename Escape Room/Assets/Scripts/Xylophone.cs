@@ -9,7 +9,6 @@ public class Xylophone : MonoBehaviour
 
     private void Start(){
         Notes.OnBarHit += PlaySound;
-        audioSource = GetComponent<AudioSource> ();
     }
 
     private void OnDestroy(){
