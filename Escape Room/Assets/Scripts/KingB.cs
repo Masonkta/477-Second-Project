@@ -7,44 +7,59 @@ public class KingB : MonoBehaviour
 {
     public State State { get; private set; }
     public GameObject chessGameLogic;
-    private KingBState lastSnap;
+    private KingBState lastSnapLocal;
     // Start is called before the first frame update
     void Start()
     {
-        lastSnap = KingBState.NONE;
-        State = State.IDLE;
+        lastSnapLocal = KingBState.NONE;
+        State = chessGameLogic.GetComponent<ChessGameLogic>().currState;
+        print("STARTING STATE: " + State);
         print("Starting");
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (lastSnap == KingBState.NONE)
+        if (lastSnapLocal == KingBState.NONE)
         {
             return;
         }
-        switch (State)
+        switch (State = chessGameLogic.GetComponent<ChessGameLogic>().currState)
         {
             case State.IDLE:
-                if (lastSnap == KingBState.POS1SNAP1)
-                    ChangeState(State._1_BP);
-                else
-                    ChangeState(State.ERROR);
-                break;
-            case State._1_BP:
-                if (lastSnap == KingBState.POS2SNAP1)
-                    ChangeState(State._2_Pos2Snap1_FINISH);
-                else
-                    ChangeState(State.ERROR);
-                break;
-            case State.INCORRECT:
-                if (lastSnap == KingBState.POS1INCORRECT)
+                if (lastSnapLocal == KingBState.POS1SNAP1)// Add a bunch of OR statments
                     ChangeState(State.INCORRECT);
                 else
                     ChangeState(State.ERROR);
                 break;
+            case State._1_BP:
+                if (lastSnapLocal == KingBState.POS1SNAP1)
+                    ChangeState(State.INCORRECT);
+                break;
+            case State._2_WK:
+                //NOTE: Might not need if statments for completly incorrect states? Only fires off once the piece is snapped, not constantly
+                if (lastSnapLocal == KingBState.POS2SNAP1)
+                    ChangeState(State.INCORRECT);
+                else
+                    ChangeState(State.ERROR);
+                break;
+            case State._3_BR:
+                if (lastSnapLocal == KingBState.POS2SNAP1)
+                    ChangeState(State.INCORRECT);
+                break;
+            case State._4_WR:
+                if (lastSnapLocal == KingBState.POS2SNAP1)
+                    ChangeState(State.INCORRECT);
+                break;
+            case State._5_BP:
+                if (lastSnapLocal == KingBState.POS2SNAP1)
+                    ChangeState(State.INCORRECT);
+                break;
+            case State.INCORRECT:
+                ChangeState(State.IDLE);
+                break;
         }
-        lastSnap = KingBState.NONE;
+        lastSnapLocal = KingBState.NONE;
     }
     private void ChangeState(State newState)
     {
@@ -80,24 +95,24 @@ public class KingB : MonoBehaviour
     private void Snap1Pos1()
     {
         print("SNAPPED");
-        print(lastSnap);
-        lastSnap = KingBState.POS1SNAP1;
-        print(lastSnap);
+        print(lastSnapLocal);
+        lastSnapLocal = KingBState.POS1SNAP1;
+        print(lastSnapLocal);
     }
     private void Snap1INCORRECT()
     {
         print("SNAPPED");
-        print(lastSnap);
-        lastSnap = KingBState.POS1INCORRECT;
-        print(lastSnap);
+        print(lastSnapLocal);
+        lastSnapLocal = KingBState.POS1INCORRECT;
+        print(lastSnapLocal);
     }
     private void Snap2Pos1()
     {
         print("SNAPPED");
-        print(lastSnap);
-        lastSnap = KingBState.POS2SNAP1;
+        print(lastSnapLocal);
+        lastSnapLocal = KingBState.POS2SNAP1;
         //lastSnap = SnapStates.POS1SNAP1;
         print("lastSnap Change");
-        print(lastSnap);
+        print(lastSnapLocal);
     }
 }
