@@ -34,7 +34,9 @@ public class KingW : MonoBehaviour
             case State._1_BP:
                 if (lastSnapLocal == KingWState.POS1SNAP1)
                     ChangeState(State._2_WK);
-                break;
+                else
+                    ChangeState(State.INCORRECT);
+                    break;
             case State._2_WK:
                 //NOTE: Might not need if statments for completly incorrect states? Only fires off once the piece is snapped, not constantly
                 if (lastSnapLocal == KingWState.POS2SNAP1)
