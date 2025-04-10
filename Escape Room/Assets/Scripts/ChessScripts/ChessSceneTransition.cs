@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ChessSceneTransition : MonoBehaviour
 {
@@ -21,7 +22,8 @@ public class ChessSceneTransition : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            SceneManaager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene("Logan (light puzzle)");
+            print("I AM IN DOORWAY!");
         }
     }
 }
