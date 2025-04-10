@@ -46,9 +46,9 @@ public class LightRoom : MonoBehaviour {
         };
         CurState = State.INIT;
 
-        //blueLens.transform.position = lensSpawn.transform.position;
-        //redLens.transform.position = outside.transform.position;
-        //yellowDoor.transform.position = outside.transform.position;
+        blueLens.transform.position = lensSpawn.transform.position;
+        redLens.transform.position = outside.transform.position;
+        yellowDoor.transform.position = outside.transform.position;
     }
 
     void Update() {

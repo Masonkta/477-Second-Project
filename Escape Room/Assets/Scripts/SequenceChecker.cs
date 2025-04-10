@@ -24,7 +24,6 @@ public class SequenceChecker : MonoBehaviour
     private void Start()
     {
         Notes.OnBarHit += CheckInput;
-        Debug.Log("working");
     }
 
     private void OnDestroy()

@@ -1995,7 +1995,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 1.02e-43, y: 3e-45, z: 7.165e-42, w: 4.9357973e-31}
+  m_BoundingSphereOverride: {x: 9.1835e-41, y: NaN, z: 0, w: 1e-45}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -4623,6 +4623,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barNumber: 5
+  hitCooldown: 3
 --- !u!1 &4843750179486997559
 GameObject:
   m_ObjectHideFlags: 0
@@ -4792,7 +4793,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5710194816540854712}
   - component: {fileID: 8322636354757819984}
+  - component: {fileID: 8322636354757819986}
   - component: {fileID: 8322636354757819985}
+  - component: {fileID: 8322636354757819987}
   m_Layer: 0
   m_Name: Xylophone
   m_TagString: Untagged
@@ -5192,6 +5195,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barNumber: 2
+  hitCooldown: 3
 --- !u!4 &5815678251945919245
 Transform:
   m_ObjectHideFlags: 0
@@ -5461,6 +5465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barNumber: 1
+  hitCooldown: 3
 --- !u!23 &6210958751507338163
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6232,6 +6237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barNumber: 4
+  hitCooldown: 3
 --- !u!64 &8322636354757819984
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6266,12 +6272,115 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39b794620f1236b4dbad1d13ed0af699, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioClip:
-  - {fileID: 8300000, guid: f4ec20cae397df74689f4119b1d0da50, type: 3}
-  - {fileID: 8300000, guid: 84e609079b46ba8479c410f8b45c4089, type: 3}
-  - {fileID: 8300000, guid: a2e71f1b9dcff7f4794ca4af7ac10ad6, type: 3}
-  - {fileID: 8300000, guid: 108c68ddb1b282c48a81b0840a057792, type: 3}
-  - {fileID: 8300000, guid: e47eb0be553fa094dbdbcb4c5289132d, type: 3}
+  audioClip: []
+--- !u!114 &8322636354757819986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932988888777069314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dedc570029e8cb840af5a0881ee67e3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!82 &8322636354757819987
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4932988888777069314}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: cf763f830c42e2f4bbcb18d8ce508658, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!23 &8625612678226639004
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -6563,6 +6672,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barNumber: 3
+  hitCooldown: 3
 --- !u!4 &8885331020317774557
 Transform:
   m_ObjectHideFlags: 0
