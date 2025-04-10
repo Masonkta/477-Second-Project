@@ -401,6 +401,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 772141265}
+  - component: {fileID: 772141267}
+  - component: {fileID: 772141266}
   m_Layer: 0
   m_Name: RedDoor
   m_TagString: Untagged
@@ -424,6 +426,42 @@ Transform:
   - {fileID: 7691267951751735963}
   m_Father: {fileID: 4845368735349807836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &772141266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772141264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaefcac4083abc4f9a0db66b1e8d7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Christian(Chess_Puzzle)
+--- !u!136 &772141267
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772141264}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.0649365
+  m_Height: 6
+  m_Direction: 1
+  m_Center: {x: -7.284876, y: -1, z: 4.436407}
 --- !u!1 &834978408
 GameObject:
   m_ObjectHideFlags: 0
@@ -730,9 +768,6 @@ MonoBehaviour:
   yellowLens: {fileID: 1639248679}
   yellowDoor: {fileID: 4326732026959600161}
   lensSpawn: {fileID: 1245830449}
-  outside: {fileID: 0}
-  chessFinished: 0
-  numFinished: 0
 --- !u!4 &1027665732
 Transform:
   m_ObjectHideFlags: 0
@@ -1126,6 +1161,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1513191108}
+  - component: {fileID: 1513191110}
+  - component: {fileID: 1513191109}
   m_Layer: 0
   m_Name: YellowDoor
   m_TagString: Untagged
@@ -1149,6 +1186,42 @@ Transform:
   - {fileID: 726793301124019955}
   m_Father: {fileID: 4845368735349807836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1513191109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513191107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaefcac4083abc4f9a0db66b1e8d7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Victory
+--- !u!136 &1513191110
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513191107}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Height: 5
+  m_Direction: 1
+  m_Center: {x: -31.53679, y: 7.212388, z: 13.43153}
 --- !u!1001 &1536123477
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1566,6 +1639,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1629328779}
+  - component: {fileID: 1629328781}
+  - component: {fileID: 1629328780}
   m_Layer: 0
   m_Name: BlueDoor
   m_TagString: Untagged
@@ -1589,6 +1664,42 @@ Transform:
   - {fileID: 4386566727775379180}
   m_Father: {fileID: 4845368735349807836}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1629328780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629328778}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: deaefcac4083abc4f9a0db66b1e8d7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: Zoe Scene
+--- !u!136 &1629328781
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1629328778}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.4
+  m_Height: 10
+  m_Direction: 1
+  m_Center: {x: 6, y: -1, z: -8}
 --- !u!1001 &1639248678
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7030,7 +7141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
