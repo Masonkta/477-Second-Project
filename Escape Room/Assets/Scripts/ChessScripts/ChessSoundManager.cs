@@ -6,6 +6,7 @@ using UnityEngine;
 public enum ChessSoundType
 {
     CLICK,
+    SUCCESS,
     HOVER,
 }
 
@@ -68,6 +69,8 @@ public class ChessSoundManager : MonoBehaviour
         audioSrc = GetComponent<AudioSource>();
         sounds = new Dictionary<ChessSoundType, ChessSoundCollection> {
     { ChessSoundType.CLICK, new ChessSoundCollection("audio/Button_22_click", "audio/Button_14_hover") },
+    { ChessSoundType.SUCCESS, new ChessSoundCollection("audio/solved") },
+    
 
     // xylophone notes
         };
