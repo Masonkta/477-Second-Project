@@ -91,6 +91,8 @@ public class PawnB : MonoBehaviour
                 case State._5_BP:
                     ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
                     ChessSoundManager.Instance.Play(ChessSoundType.SUCCESS);
+                    lightscript.chessPuz = true;
+                    chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
                     print("FINISH ACHIEVED!");
                     //GameObject reward = GameObject.Find("ChessTable/LensReward");
                     chessGameLogic.GetComponent<ChessGameLogic>().Reward.SetActive(true);
@@ -101,7 +103,6 @@ public class PawnB : MonoBehaviour
                     break;
                 case State.INCORRECT:
                     ChessSoundManager.Instance.Play(ChessSoundType.CLICK);
-                    lightscript.chessPuz = true;
                     chessGameLogic.GetComponent<ChessGameLogic>().PuzzleReset();
                     break;
             }
