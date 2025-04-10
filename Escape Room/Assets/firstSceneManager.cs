@@ -17,6 +17,7 @@ public class firstSceneManager : MonoBehaviour {
     public GameObject door;
     public checkForPlayerInside playerInsideTemple;
     public GameObject player;
+    public Transform playerCam;
     public float doorSpeed = 1f;
     public Image fadeOutScreen;
 
@@ -71,6 +72,9 @@ public class firstSceneManager : MonoBehaviour {
         };
 
         ChangeState(SceneState.WAITING);
+
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerCam = player.transform.Find("Camera Offset").transform.Find("Main Camera");   
     }
 
     void Update() {
@@ -171,6 +175,10 @@ public class firstSceneManager : MonoBehaviour {
 
     void EnterTeleporting() { }
     void UpdateTeleporting() {
+
+        fadeOutScreen.transform.parent.position = playerCam.position + playerCam.forward * 0.9f;
+        fadeOutScreen.transform.parent.rotation = Quaternion.LookRotation(fadeOutScreen.transform.parent.position - playerCam.position);
+
         if (fadeOutScreen.color.a < 1f) {
             Color temp = fadeOutScreen.color;
             temp.a += Time.deltaTime * 1 / 0.3f;

@@ -14,6 +14,7 @@ public class gameTimer : MonoBehaviour
     private InputDevice rightController;
 
     public float elapsedTime = 0f;
+    public float percentOfDayLeft;
     public bool leftStickPressed;
     public bool rightStickPressed;
     public TextMeshProUGUI timerCanvas;
@@ -30,8 +31,7 @@ public class gameTimer : MonoBehaviour
     public AudioSource explosionSound;
     bool hasStartedRumbling = false;
     
-
-
+    public bool fadeOutCompleted = false;
 
     void Awake()
     {
@@ -71,11 +71,17 @@ public class gameTimer : MonoBehaviour
 
         // Perform any first-frame actions here
         PerformFirstFrameAction();
+        fadeOutCompleted = false;
+        blackPic.gameObject.SetActive(true);
+        Color temp = blackPic.color;
+        temp.a = 1f;
+        blackPic.color = temp;
     }
 
     void PerformFirstFrameAction()
     {
         // Any logic you want to execute on the first frame
+        
         assignPlayer();
     }
 
@@ -114,8 +120,25 @@ public class gameTimer : MonoBehaviour
         timerStuff();
         timerCanvas.gameObject.SetActive(leftStickPressed || rightStickPressed);
 
+        if (blackPic.gameObject.activeInHierarchy && !fadeOutCompleted){
+            blackPic.transform.parent.position = playerCamera.position + playerCamera.forward * 0.9f;
+            blackPic.transform.parent.rotation = Quaternion.LookRotation(blackPic.transform.parent.position - playerCamera.transform.position);
+
+            if (blackPic.color.a > 0f) {
+                Color temp = blackPic.color;
+                temp.a -= Time.deltaTime * 1 / 2f;
+                blackPic.color = temp;
+            }
+            if (blackPic.color.a <= 0f) {
+                blackPic.gameObject.SetActive(false);
+                fadeOutCompleted = true;
+            }
+        }
+
         Time.timeScale = rightStickPressed ? 60f : 1f;
         elapsedTime += Time.deltaTime;
+        percentOfDayLeft = 1f - (elapsedTime / (20f * 60f));
+        percentOfDayLeft = Mathf.Clamp(percentOfDayLeft, 0f, 1f);
         gameOver = elapsedTime > 20f * 60f;
         if (gameOver)
             Time.timeScale = 1f;
@@ -167,7 +190,7 @@ public class gameTimer : MonoBehaviour
                 explosionSound.Play();
                 }
 
-                blackPic.transform.parent.position = playerCamera.position + playerCamera.forward * 2f;
+                blackPic.transform.parent.position = playerCamera.position + playerCamera.forward * 0.9f;
                 blackPic.transform.parent.rotation = Quaternion.LookRotation(blackPic.transform.parent.position - playerCamera.transform.position);
 
                 if (blackPic.color.a < 1f) {
