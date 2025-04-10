@@ -768,6 +768,8 @@ MonoBehaviour:
   yellowLens: {fileID: 1639248679}
   yellowDoor: {fileID: 4326732026959600161}
   lensSpawn: {fileID: 1245830449}
+  musicPuz: 0
+  chessPuz: 0
 --- !u!4 &1027665732
 Transform:
   m_ObjectHideFlags: 0
