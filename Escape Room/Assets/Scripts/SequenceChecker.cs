@@ -77,7 +77,7 @@ public class SequenceChecker : MonoBehaviour
         
             // plays beat back after completing
             SoundManager.Instance.Play(SoundType.SOLVED);
-            lightscript.ChangeState(LightRoomState.FIRST);
+            lightscript.musicPuz = true;
         }
 
     }

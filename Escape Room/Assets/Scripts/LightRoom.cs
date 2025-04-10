@@ -22,6 +22,8 @@ public class LightRoom : MonoBehaviour {
     public GameObject yellowLens;
     public GameObject yellowDoor;
     public GameObject lensSpawn;
+    public bool musicPuz;
+    public bool chessPuz;
     #endregion
 
     #region privates
@@ -63,6 +65,12 @@ public class LightRoom : MonoBehaviour {
     void Update() {
         if (stateStayMethods.ContainsKey(CurState)) {
             stateStayMethods[CurState]();
+        }
+        if (musicPuz) {
+            ChangeState(State.FIRST);
+        }
+        if (chessPuz) { 
+            ChangeState(State.SECOND);
         }
     }
 
