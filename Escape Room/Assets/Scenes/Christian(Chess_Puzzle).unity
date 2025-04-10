@@ -527,24 +527,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
---- !u!114 &1188618212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9130708675131852332}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 484b93ad4652f29429c8f618e04d4caa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BKOrigin: {fileID: 0}
-  BROrigin: {fileID: 0}
-  BPOrigin: {fileID: 0}
-  WKOrigin: {fileID: 0}
-  WROrigin: {fileID: 0}
-  WPOrigin: {fileID: 0}
 --- !u!1 &1258909425
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,6 +845,10 @@ PrefabInstance:
       propertyPath: Reward
       value: 
       objectReference: {fileID: 887781799}
+    - target: {fileID: 3501144464831504390, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
+      propertyPath: maxPieceRange
+      value: 0.35
+      objectReference: {fileID: 0}
     - target: {fileID: 5392323255878642624, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.8215
@@ -908,18 +894,11 @@ PrefabInstance:
       value: ChessTable
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1701351144754823049, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1701351144754823049, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1188618212}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
---- !u!1 &9130708675131852332 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1701351144754823049, guid: bdc3f81ff3a94f04ea6e71a35f4dce3f, type: 3}
-  m_PrefabInstance: {fileID: 7578048490880596389}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

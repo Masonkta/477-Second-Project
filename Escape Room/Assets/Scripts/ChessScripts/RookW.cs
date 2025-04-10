@@ -26,36 +26,26 @@ public class RookW : MonoBehaviour
         switch (State = chessGameLogic.GetComponent<ChessGameLogic>().currState)
         {
             case State.IDLE:
-                if (lastSnapLocal == RookWState.POS1SNAP1)// Add a bunch of OR statments
-                {
-                    print("STATE IDLE: " + State);
-                    ChangeState(State.INCORRECT);
-                }
-                else
-                    ChangeState(State.ERROR);
+                ChangeState(State.INCORRECT);
                 break;
             case State._1_BP:
-                if (lastSnapLocal == RookWState.POS1SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._2_WK:
                 //NOTE: Might not need if statments for completly incorrect states? Only fires off once the piece is snapped, not constantly
-                if (lastSnapLocal == RookWState.POS1SNAP1)
-                    ChangeState(State.INCORRECT);
-                else
-                    ChangeState(State.ERROR);
+                ChangeState(State.INCORRECT);
                 break;
             case State._3_BR:
                 if (lastSnapLocal == RookWState.POS1SNAP1)
                     ChangeState(State._4_WR);
+                else
+                    ChangeState(State.INCORRECT);
                 break;
             case State._4_WR:
-                if (lastSnapLocal == RookWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State._5_BP:
-                if (lastSnapLocal == RookWState.POS2SNAP1)
-                    ChangeState(State.INCORRECT);
+                ChangeState(State.INCORRECT);
                 break;
             case State.INCORRECT:
                 ChangeState(State.IDLE);
