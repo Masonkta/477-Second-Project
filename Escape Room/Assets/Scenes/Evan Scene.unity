@@ -7713,6 +7713,7 @@ GameObject:
   - component: {fileID: 904295623}
   - component: {fileID: 904295622}
   - component: {fileID: 904295621}
+  - component: {fileID: 904295627}
   m_Layer: 0
   m_Name: Handheld Cube
   m_TagString: Untagged
@@ -7955,6 +7956,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1736800183}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &904295627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904295620}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c093481b95819db4bb7d5ad7a673529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 8300000, guid: a5ab10445f634034ba814b0d9304c517, type: 3}
+  VolumeScale: 1
+  PitchScale: 1
 --- !u!1 &908524621
 GameObject:
   m_ObjectHideFlags: 0
@@ -11472,6 +11488,8 @@ MonoBehaviour:
   correctSpotForCube: {fileID: 1154701699}
   handHeldCube: {fileID: 904295620}
   currentState: 0
+  leverDink: {fileID: 8300000, guid: 3e15c422dbe7fa7439638e1e26ad76bf, type: 3}
+  doorOpening: {fileID: 8300000, guid: 2b8764f9e01e8f04c9377b855c004c55, type: 3}
 --- !u!1 &1457040900
 GameObject:
   m_ObjectHideFlags: 0
@@ -17492,6 +17510,21 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1219276853674915501, guid: 8a71c6da96c3ba946bfd9b9385b1b551, type: 3}
   m_PrefabInstance: {fileID: 8916460704371537552}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4639480495777412870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4222765583007189599}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c093481b95819db4bb7d5ad7a673529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 8300000, guid: a5ab10445f634034ba814b0d9304c517, type: 3}
+  VolumeScale: 1
+  PitchScale: 1
 --- !u!1 &4738861987033760108
 GameObject:
   m_ObjectHideFlags: 0
@@ -18049,8 +18082,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3192853139146684590, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6551397308289689760}
   m_SourcePrefab: {fileID: 100100000, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+--- !u!1 &6551397308289689759 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3192853139146684590, guid: 61bb17096a34b6f44a1d3e2001c3e0d7, type: 3}
+  m_PrefabInstance: {fileID: 6551397308289689758}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6551397308289689760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6551397308289689759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c093481b95819db4bb7d5ad7a673529c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Sound: {fileID: 8300000, guid: a5ab10445f634034ba814b0d9304c517, type: 3}
+  VolumeScale: 1
+  PitchScale: 1
 --- !u!23 &6646379087695136204
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -18702,6 +18758,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2952832729555570522, guid: 8a71c6da96c3ba946bfd9b9385b1b551, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4639480495777412864}
+    - targetCorrespondingSourceObject: {fileID: 2952832729555570522, guid: 8a71c6da96c3ba946bfd9b9385b1b551, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4639480495777412870}
   m_SourcePrefab: {fileID: 100100000, guid: 8a71c6da96c3ba946bfd9b9385b1b551, type: 3}
 --- !u!23 &9122582860569516440
 MeshRenderer:

@@ -42,7 +42,10 @@ public class firstSceneManager : MonoBehaviour {
     private Dictionary<SceneState, Action> stateEnterMethods;
     private Dictionary<SceneState, Action> stateUpdateMethods;
     private Dictionary<SceneState, Action> stateExitMethods;
-
+    private float lastValue;
+    public AudioClip leverDink;
+    public AudioClip doorOpening;
+    private bool hasHit = false;
     void Start() {
         coinRb = coin.GetComponent<Rigidbody>();
 
@@ -72,6 +75,45 @@ public class firstSceneManager : MonoBehaviour {
 
     void Update() {
         stateUpdateMethods[currentState]?.Invoke();
+
+        audioStuff();
+        
+    }
+
+    void audioStuff(){
+        float currentValue = doorLeverKnobScript.value;
+        
+        if (!canFlipLever && !hasHit && lastValue > 0.8f && currentValue <= 0.8f)
+        {
+            leverDinkSound();
+            hasHit = true;
+        }
+
+        if (hasHit && currentValue > 0.81f)
+        {
+            hasHit = false;
+        }
+
+        lastValue = currentValue;
+    }
+
+
+    void leverDinkSound(){
+        GameObject tempAudio = new GameObject("TempAudio");
+        AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
+        audioSource.clip = leverDink;
+        audioSource.volume = 0.25f;
+        audioSource.Play();
+        Destroy(tempAudio, leverDink.length);
+    }
+    void doorOpeningSound(){
+        GameObject tempAudio = new GameObject("TempAudio");
+        AudioSource audioSource = tempAudio.AddComponent<AudioSource>();
+        audioSource.clip = doorOpening;
+        audioSource.volume = 0.4f;
+        // audioSource.pitch = 0.85f;
+        audioSource.Play();
+        Destroy(tempAudio, leverDink.length); 
     }
 
     private void ChangeState(SceneState newState) {
@@ -107,6 +149,7 @@ public class firstSceneManager : MonoBehaviour {
         }
 
         if (doorLeverKnobScript.value <= 0.15f) {
+            doorOpeningSound();
             ChangeState(SceneState.OPENING_DOOR);
         }
     }
