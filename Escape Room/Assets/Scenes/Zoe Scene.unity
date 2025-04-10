@@ -438,7 +438,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6598815579406187037, guid: 18ddb545287c546e19cc77dc9fbb2189, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2134,7 +2134,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 6e-44, z: 4e-45, w: 1.5609e-41}
+  m_BoundingSphereOverride: {x: 0, y: 1.05e-43, z: 2.7e-44, w: 4.183e-42}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
@@ -6539,6 +6539,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dedc570029e8cb840af5a0881ee67e3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Door: {fileID: 0}
+  lightscript: {fileID: 0}
 --- !u!82 &8322636354757819987
 AudioSource:
   m_ObjectHideFlags: 0
