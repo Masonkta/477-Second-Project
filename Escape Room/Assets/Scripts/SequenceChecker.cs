@@ -20,12 +20,15 @@ public class SequenceChecker : MonoBehaviour
     // tracks player input
     private List<int> playerInput = new List<int>();
 
+    public GameObject Door;
+    public LightRoom lightscript;
 
     private void Start()
     {
         Notes.OnBarHit += CheckInput;
+        Door = GameObject.Find("DoorLogic");
+        lightscript = Door.GetComponent<LightRoom>();
     }
-
     private void OnDestroy()
     {
         Notes.OnBarHit -= CheckInput;
@@ -74,6 +77,7 @@ public class SequenceChecker : MonoBehaviour
         
             // plays beat back after completing
             SoundManager.Instance.Play(SoundType.SOLVED);
+            lightscript.ChangeState(LightRoomState.FIRST);
         }
 
     }
