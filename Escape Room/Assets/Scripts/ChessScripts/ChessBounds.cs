@@ -22,10 +22,10 @@ public class ChessBounds : MonoBehaviour
         
     }
     private void OnTriggerExit(Collider other)
-    {/*
+    {
         if (other.CompareTag("BlackPawn")){
             print("BLACK PAWN GONE!");
         }
-        */
+        
     }
 }
