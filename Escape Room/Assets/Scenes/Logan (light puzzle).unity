@@ -732,6 +732,54 @@ MonoBehaviour:
   m_StartingMultipleGrabTransformers: []
   m_AddDefaultGrabTransformers: 1
   m_FarAttachMode: 1
+--- !u!1 &997048605
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 997048607}
+  - component: {fileID: 997048606}
+  m_Layer: 0
+  m_Name: Brute force it
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &997048606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997048605}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eecf8b03cf84c3f4eb45e7f6c9139bc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blueLens: {fileID: 1494766300}
+  redLens: {fileID: 958551509}
+  yellow: {fileID: 1639248679}
+  mainScript: {fileID: 1027665731}
+--- !u!4 &997048607
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997048605}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.0930688, y: 1.1290073, z: -0.20444112}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1027665730
 GameObject:
   m_ObjectHideFlags: 0
@@ -8318,3 +8366,4 @@ SceneRoots:
   - {fileID: 1639248678}
   - {fileID: 4845368735349807836}
   - {fileID: 1027665732}
+  - {fileID: 997048607}

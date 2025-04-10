@@ -8,9 +8,9 @@ public class SceneChanger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Logan (light puzzle)"))
+        if (other.CompareTag("Player"))
         {
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene("Logan (light puzzle)");
         }
     }
 }

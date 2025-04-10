@@ -33,10 +33,22 @@ public class LightRoom : MonoBehaviour {
     #endregion
 
     private void Awake() {
-        DontDestroyOnLoad(gameObject);
+
+        GameObject a = GameObject.Find(gameObject.name);
+
+        if (a == gameObject && !musicPuz)
+            DontDestroyOnLoad(gameObject);
+        else if (!a == gameObject && musicPuz)
+            Destroy(a);
+        
     }
+    
 
     void Start() {
+        GameObject a = GameObject.Find(gameObject.name);
+        if (!a == gameObject && musicPuz)
+            Destroy(a);
+
         Lightroom = this;
         stateEnterMethods = new() {
             [State.INIT] = StateEnterINIT,
@@ -57,9 +69,9 @@ public class LightRoom : MonoBehaviour {
 
         blueLens.transform.position = lensSpawn.transform.position;
         redLens.transform.position = lensSpawn.transform.position;
-        redLens.SetActive(false);
+        // redLens.SetActive(false);
         yellowLens.transform.position = lensSpawn.transform.position;
-        yellowLens.SetActive(false);
+        // yellowLens.SetActive(false);
     }
 
     void Update() {
@@ -90,16 +102,16 @@ public class LightRoom : MonoBehaviour {
     private void StateEnterINIT() {
     }
     private void StateEnterFIRST() {
-        blueDoor.transform.position = new Vector3(4, -7.66f, -6);
-        blueLens.SetActive(false);
-        redLens.SetActive(true);
+        if (blueDoor) blueDoor.transform.position = new Vector3(4, -7.66f, -6);
+        if (blueLens) blueLens.SetActive(false);
+        if (redLens) redLens.SetActive(true);
     }
     private void StateEnterSECOND() {
-        blueDoor.transform.position = new Vector3(4, -7.66f, -6);
-        redDoor.transform.position = new Vector3(-6, -7.66f, 4);
-        redLens.SetActive(false);
-        blueLens.SetActive(false);
-        yellowLens.SetActive(true);
+        if (blueDoor) blueDoor.transform.position = new Vector3(4, -7.66f, -6);
+        if (redDoor) redDoor.transform.position = new Vector3(-6, -7.66f, 4);
+        if (redLens) redLens.SetActive(false);
+        if (blueLens) blueLens.SetActive(false);
+        if (yellowLens) yellowLens.SetActive(true);
     }
     #endregion
 

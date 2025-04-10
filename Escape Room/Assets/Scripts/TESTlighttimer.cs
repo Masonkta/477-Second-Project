@@ -14,15 +14,17 @@ public class TESTlighttimer : MonoBehaviour {
         var shape = lighting.shape;
         shape.radius = lightingR;
         shape.angle = lightingAng;
-        timeElaps = GetComponent<gameTimer>().elapsedTime;
+        
     }
 
     // Update is called once per frame
     void Update() {
+        timeElaps = GameObject.Find("Game Timer").GetComponent<gameTimer>().percentOfDayLeft;
+
         var shape = lighting.shape;
 
         if (shape.angle > 0) { 
-            lightingAng -= timeElaps;
+            lightingAng = timeElaps * 40f;
             shape.angle = lightingAng;
         } else {
             if (lightingR <= 0.005) {
@@ -30,7 +32,7 @@ public class TESTlighttimer : MonoBehaviour {
                 print("off");
             }
             else {
-                lightingR -= timeElaps;
+                lightingR = timeElaps * 11f;
             }
             shape.radius = lightingR;
         }
