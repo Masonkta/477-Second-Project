@@ -49,6 +49,8 @@ public class ChessGameLogic : MonoBehaviour
     private bool wkReset;
     private bool wpReset;
     private bool wrReset;
+
+    public float maxPieceRange;
     // Start is called before the first frame update
     void Start()
     {
@@ -69,6 +71,36 @@ public class ChessGameLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Vector3.Distance(BK.transform.position, BKOrigin) > maxPieceRange)
+        {
+            print("PIECE TOO FAR!!!!");
+            BK.transform.position = BKOrigin;
+        }
+        if (Vector3.Distance(BR.transform.position, BROrigin) > maxPieceRange)
+        {
+            print("PIECE TOO FAR!!!!");
+            BR.transform.position = BROrigin;
+        }
+        if (Vector3.Distance(BP.transform.position, BPOrigin) > maxPieceRange)
+        {
+            print("PIECE TOO FAR!!!!");
+            BP.transform.position = BPOrigin;
+        }
+        if (Vector3.Distance(WK.transform.position, WKOrigin) > maxPieceRange)
+        {
+            print("PIECE TOO FAR!!!!");
+            WK.transform.position = WKOrigin;
+        }
+        if (Vector3.Distance(WR.transform.position, WROrigin) > maxPieceRange)
+        {
+            print("PIECE TOO FAR!!!!");
+            WR.transform.position = WROrigin;
+        }
+        if (Vector3.Distance(WP.transform.position, WPOrigin) > maxPieceRange)
+        {
+            print("PIECE TOO FAR!!!!");
+            WP.transform.position = WPOrigin;
+        }
         if (reset)
         {
 
@@ -184,6 +216,7 @@ public class ChessGameLogic : MonoBehaviour
                 reset = false;
             }
         }
+
     }
     public void PuzzleReset()
     {
