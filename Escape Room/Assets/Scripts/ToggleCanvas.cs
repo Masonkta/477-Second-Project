@@ -16,7 +16,7 @@ public class ToggleCanvas : MonoBehaviour
     private void Update()
     {
         if (Image.activeInHierarchy) {
-            Image.transform.position = playerCam.position + playerCam.forward * 0.9f;
+            Image.transform.position = playerCam.position + playerCam.forward * 1f;
             Image.transform.rotation = Quaternion.LookRotation(Image.transform.position - playerCam.position);
         }
     }
