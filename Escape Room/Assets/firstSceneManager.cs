@@ -18,6 +18,7 @@ public class firstSceneManager : MonoBehaviour
     [Header("Conditions For Door")]
     public bool coinOn;
     public bool needleInCorrectPosition;
+    public bool cubeInCorrectPos;
     public bool canFlipLever;
     [Header("Stuff")]
     
@@ -25,6 +26,8 @@ public class firstSceneManager : MonoBehaviour
     public GameObject coin;
     public XRKnob doorLeverKnobScript;
     public XRKnob needleKnobScript;
+    public Transform correctSpotForCube;
+    public GameObject handHeldCube;
     Rigidbody coinRb;
     
 
@@ -46,11 +49,12 @@ public class firstSceneManager : MonoBehaviour
     }
 
     void checkCondition(){
-        // Debug.Log(Vector3.Distance(coin.transform.position, correctHook.transform.position));
+        // Debug.Log();
         coinOn = Vector3.Distance(coin.transform.position, correctHook.transform.position) < 0.16f && coinRb.isKinematic;
         needleInCorrectPosition = needleKnobScript.value > 0f ? (needleKnobScript.value % 1f) > 0.75f && (needleKnobScript.value % 1f) <= 0.875f : (-needleKnobScript.value % 1f) < 0.25f && (-needleKnobScript.value % 1f) >= 0.125f;
+        cubeInCorrectPos = Vector3.Distance(handHeldCube.transform.position, correctSpotForCube.position) < 0.1f;
 
-        canFlipLever = coinOn & needleInCorrectPosition;
+        canFlipLever = coinOn & needleInCorrectPosition && cubeInCorrectPos;
 
         teleporting = playerInsideTemple.playerInside;
     }
