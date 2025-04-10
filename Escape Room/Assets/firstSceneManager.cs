@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VRTemplate;
@@ -5,15 +6,18 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class firstSceneManager : MonoBehaviour
-{
+public enum SceneState {
+    WAITING,
+    READY_TO_OPEN,
+    OPENING_DOOR,
+    TELEPORTING
+}
+
+public class firstSceneManager : MonoBehaviour {
     public GameObject door;
     public checkForPlayerInside playerInsideTemple;
     public GameObject player;
-    public bool doorOpening;
     public float doorSpeed = 1f;
-    public bool teleporting = false;
-    bool teleported = false;
     public Image fadeOutScreen;
 
     [Header("Conditions For Door")]
@@ -21,77 +25,138 @@ public class firstSceneManager : MonoBehaviour
     public bool needleInCorrectPosition;
     public bool cubeInCorrectPos;
     public bool canFlipLever;
+
     [Header("Stuff")]
-    
     public GameObject correctHook;
     public GameObject coin;
     public XRKnob doorLeverKnobScript;
     public XRKnob needleKnobScript;
     public Transform correctSpotForCube;
     public GameObject handHeldCube;
-    Rigidbody coinRb;
-    
 
+    private Rigidbody coinRb;
+    private bool teleported = false;
 
-    void Start()
-    {
+    public SceneState currentState;
+
+    private Dictionary<SceneState, Action> stateEnterMethods;
+    private Dictionary<SceneState, Action> stateUpdateMethods;
+    private Dictionary<SceneState, Action> stateExitMethods;
+
+    void Start() {
         coinRb = coin.GetComponent<Rigidbody>();
-    }
-    
 
-    void Update()
-    {
+        stateEnterMethods = new() {
+            [SceneState.WAITING] = EnterWaiting,
+            [SceneState.READY_TO_OPEN] = EnterReadyToOpen,
+            [SceneState.OPENING_DOOR] = EnterOpeningDoor,
+            [SceneState.TELEPORTING] = EnterTeleporting
+        };
+
+        stateUpdateMethods = new() {
+            [SceneState.WAITING] = UpdateWaiting,
+            [SceneState.READY_TO_OPEN] = UpdateReadyToOpen,
+            [SceneState.OPENING_DOOR] = UpdateOpeningDoor,
+            [SceneState.TELEPORTING] = UpdateTeleporting
+        };
+
+        stateExitMethods = new() {
+            [SceneState.WAITING] = ExitWaiting,
+            [SceneState.READY_TO_OPEN] = ExitReadyToOpen,
+            [SceneState.OPENING_DOOR] = ExitOpeningDoor,
+            [SceneState.TELEPORTING] = ExitTeleporting
+        };
+
+        ChangeState(SceneState.WAITING);
+    }
+
+    void Update() {
+        stateUpdateMethods[currentState]?.Invoke();
+    }
+
+    private void ChangeState(SceneState newState) {
+        if (newState == currentState) return;
+        stateExitMethods[currentState]?.Invoke();
+        currentState = newState;
+        stateEnterMethods[currentState]?.Invoke();
+    }
+
+    // === State: WAITING ===
+
+    void EnterWaiting() { }
+    void UpdateWaiting() {
         checkCondition();
         freezeLever();
-        checkOpenDoor();
-        
-        if (teleporting)
-            sceneChange();
+
+        if (canFlipLever) {
+            ChangeState(SceneState.READY_TO_OPEN);
+        }
     }
+    void ExitWaiting() { }
 
-    void checkCondition(){
-        // Debug.Log();
-        coinOn = Vector3.Distance(coin.transform.position, correctHook.transform.position) < 0.16f && coinRb.isKinematic;
-        needleInCorrectPosition = needleKnobScript.value > 0f ? (needleKnobScript.value % 1f) > 0.75f && (needleKnobScript.value % 1f) <= 0.875f : (-needleKnobScript.value % 1f) < 0.25f && (-needleKnobScript.value % 1f) >= 0.125f;
-        cubeInCorrectPos = Vector3.Distance(handHeldCube.transform.position, correctSpotForCube.position) < 0.1f;
+    // === State: READY_TO_OPEN ===
 
-        canFlipLever = coinOn & needleInCorrectPosition && cubeInCorrectPos;
+    void EnterReadyToOpen() { }
+    void UpdateReadyToOpen() {
+        checkCondition();
+        freezeLever();
 
-        teleporting = playerInsideTemple.playerInside;
+        if (!canFlipLever) {
+            ChangeState(SceneState.WAITING);
+            return;
+        }
+
+        if (doorLeverKnobScript.value <= 0.15f) {
+            ChangeState(SceneState.OPENING_DOOR);
+        }
     }
+    void ExitReadyToOpen() { }
 
-    void freezeLever(){
-        if (!canFlipLever)
-            doorLeverKnobScript.value = Mathf.Clamp(doorLeverKnobScript.value, 0.8f, 1f);
-        
+    // === State: OPENING_DOOR ===
+
+    void EnterOpeningDoor() { }
+    void UpdateOpeningDoor() {
+        if (door.transform.localPosition.y > -1.95f) {
+            door.transform.Translate(door.transform.up * -1f * Time.deltaTime * doorSpeed);
+        } else if (playerInsideTemple.playerInside) {
+            ChangeState(SceneState.TELEPORTING);
+        }
     }
+    void ExitOpeningDoor() { }
 
-    void checkOpenDoor(){
-        
-        if (doorLeverKnobScript.value <= 0.15f && !doorOpening)
-            doorOpening = true;
+    // === State: TELEPORTING ===
 
-        if (doorOpening)
-            if (door.transform.localPosition.y > -1.95f)
-                door.transform.Translate(door.transform.up * -1f * Time.deltaTime * doorSpeed);
-        
-                
-    }
-
-    void sceneChange(){
-        
-        if (fadeOutScreen.color.a < 1f){
+    void EnterTeleporting() { }
+    void UpdateTeleporting() {
+        if (fadeOutScreen.color.a < 1f) {
             Color temp = fadeOutScreen.color;
             temp.a += Time.deltaTime * 1 / 0.3f;
             fadeOutScreen.color = temp;
         }
 
-        if (fadeOutScreen.color.a >= 1f && !teleported){
+        if (fadeOutScreen.color.a >= 1f && !teleported) {
             teleported = true;
             SceneManager.LoadScene("Logan (light puzzle)");
         }
+    }
+    void ExitTeleporting() { }
 
+    // === Utility Functions ===
+
+    void checkCondition() {
+        coinOn = Vector3.Distance(coin.transform.position, correctHook.transform.position) < 0.16f && coinRb.isKinematic;
+
+        needleInCorrectPosition = needleKnobScript.value > 0f
+            ? (needleKnobScript.value % 1f) > 0.75f && (needleKnobScript.value % 1f) <= 0.875f
+            : (-needleKnobScript.value % 1f) < 0.25f && (-needleKnobScript.value % 1f) >= 0.125f;
+
+        cubeInCorrectPos = Vector3.Distance(handHeldCube.transform.position, correctSpotForCube.position) < 0.1f;
+
+        canFlipLever = coinOn && needleInCorrectPosition && cubeInCorrectPos;
     }
 
-
+    void freezeLever() {
+        if (!canFlipLever)
+            doorLeverKnobScript.value = Mathf.Clamp(doorLeverKnobScript.value, 0.8f, 1f);
+    }
 }

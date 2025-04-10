@@ -3,23 +3,33 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.XR;
+using UnityEngine.XR.Interaction.Toolkit.Inputs;
 
 public class gameTimer : MonoBehaviour
 {   
     private InputDevice leftController;
     private InputDevice rightController;
 
-    public bool gameOver;
-    public GameObject player;
-    public Transform playerCamera;
-
+    public float elapsedTime = 0f;
     public bool leftStickPressed;
     public bool rightStickPressed;
     public TextMeshProUGUI timerCanvas;
+    public GameObject player;
+    public Transform playerCamera;
+    public InputActionManager playerInput;
+    public float playerZ;
+    public bool gameOver;
+    public float timeOfDeath;
+    public float initialStop;
+    public bool startFallingNow;
+    public Image blackPic;
+    public AudioSource rumblingSound;
+    public AudioSource explosionSound;
+    bool hasStartedRumbling = false;
     
-    public float elapsedTime = 0f;
 
 
 
@@ -30,9 +40,13 @@ public class gameTimer : MonoBehaviour
 
     void Start()
     {
-        print("START");
+        assignPlayer();
+    }
+
+    void assignPlayer(){
         player = GameObject.FindGameObjectWithTag("Player");
         playerCamera = player.transform.Find("Camera Offset").transform.Find("Main Camera");   
+        playerInput = player.GetComponent<InputActionManager>();
     }
 
     void OnEnable()
@@ -62,9 +76,7 @@ public class gameTimer : MonoBehaviour
     void PerformFirstFrameAction()
     {
         // Any logic you want to execute on the first frame
-        Debug.Log("NEW SCENE");
-        player = GameObject.FindGameObjectWithTag("Player");
-        playerCamera = player.transform.Find("Camera Offset").transform.Find("Main Camera"); 
+        assignPlayer();
     }
 
     void InitializeControllers()
@@ -105,6 +117,62 @@ public class gameTimer : MonoBehaviour
         Time.timeScale = rightStickPressed ? 60f : 1f;
         elapsedTime += Time.deltaTime;
         gameOver = elapsedTime > 20f * 60f;
+
+        if (gameOver)
+            killPlayer();
+    }
+
+    void killPlayer(){
+
+        if (!rumblingSound.isPlaying){
+            if (!hasStartedRumbling){
+                hasStartedRumbling = true;
+                rumblingSound.Play();
+            }
+            else
+                SceneManager.LoadScene("GameOver");
+        }
+
+        if (playerInput.enabled){
+            initialStop = Time.time;
+            playerInput.enabled = false;
+        }
+
+        if (Time.time - initialStop > 1.2f && !startFallingNow){
+            startFallingNow = true;
+            timeOfDeath = Time.time;
+        }
+
+        if (startFallingNow){
+            player.transform.rotation = Quaternion.Euler(new Vector3(0f, -90f, playerZ));
+
+            float timeFalling = (Time.time - timeOfDeath) / 2f; // divided by 2 to give normalized
+            
+            if (timeFalling < 1f)
+            {
+                float speedFactor = 3f * timeFalling * timeFalling / 2f; // derivative of x^3
+                playerZ -= 90f * speedFactor * Time.deltaTime;
+            }
+            else
+            {
+                if (playerZ != -90f){
+                    playerZ = -90f;
+                print("Player hit ground");
+                blackPic.gameObject.SetActive(true);
+                explosionSound.Play();
+                }
+
+                blackPic.transform.parent.position = playerCamera.position + playerCamera.forward * 2f;
+                blackPic.transform.parent.rotation = Quaternion.LookRotation(blackPic.transform.parent.position - playerCamera.transform.position);
+
+                if (blackPic.color.a < 1f) {
+                    Color temp = blackPic.color;
+                    temp.a += Time.deltaTime * 1 / 1.3f;
+                    blackPic.color = temp;
+                }
+            }
+        }
+        
     }
 
     void getInput(){
